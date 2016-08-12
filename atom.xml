@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="xjinjin.net/"/>
-  <updated>2016-07-16T02:46:47.000Z</updated>
+  <updated>2016-08-12T17:27:32.000Z</updated>
   <id>xjinjin.net/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js数字format转换代码，带千，万，百万单位</title>
+    <link href="xjinjin.net/2016/08/12/unit-conversion/"/>
+    <id>xjinjin.net/2016/08/12/unit-conversion/</id>
+    <published>2016-08-12T13:30:37.000Z</published>
+    <updated>2016-08-12T17:27:32.000Z</updated>
+    
+    <content type="html">&lt;p&gt;所谓带单位，就是实现1000-&amp;gt;1千，259999-&amp;gt;25万，10020002-&amp;gt;1千万类似这样的处理&lt;/p&gt;
+&lt;p&gt;在介绍format的snippet之前，先来介绍一个很好用的库（虽然并没有什么关系）, &lt;a href=&quot;http://numeraljs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;numeral.js&lt;/a&gt;, 有很多format的功能，譬如百分比转换，货币转换，单位换算，还能unformat, 配置不同的语言转换标准，真的十分强大。&lt;/p&gt;
+&lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt;&lt;/excerpt&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;the rest=&quot;&quot; of=&quot;&quot; contents=&quot;&quot; |=&quot;&quot; 余下全文=&quot;&quot;&gt;
+
+&lt;/the&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;事实上，numeral.js库也提供了诸如这样的numeral(1000).format(‘0 a’) =&amp;gt; 1 千 加单位的format功能，配置好中文语言标准即可。然而，似乎只能以3位分割，匹配到千，百万，亿这种（也许文档没看仔细），可我还想要万，千万呢，又或者自由位数分割，于是就有了下面这段代码。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;NumberUpperFormat&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;input&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// num - 位数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 简单理解后面要有三个0，则是千，4个零，则是万。当然不一定是零，位数到了就行，反正都会省略掉（未做四舍五入）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 可以随意的增删改units内容实现单位的配置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; units = [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &amp;#123;num: &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, unit: &lt;span class=&quot;string&quot;&gt;&#39;千&#39;&lt;/span&gt;&amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &amp;#123;num: &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, unit: &lt;span class=&quot;string&quot;&gt;&#39;万&#39;&lt;/span&gt;&amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &amp;#123;num: &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, unit: &lt;span class=&quot;string&quot;&gt;&#39;百万&#39;&lt;/span&gt;&amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &amp;#123;num: &lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;, unit: &lt;span class=&quot;string&quot;&gt;&#39;千万&#39;&lt;/span&gt;&amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &amp;#123;num: &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;, unit: &lt;span class=&quot;string&quot;&gt;&#39;亿&#39;&lt;/span&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 精确到整数，直接用js自带方法input.toFixed(0)也可以&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; num = numeral(input).format(&lt;span class=&quot;string&quot;&gt;&#39;0&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (num.length &amp;lt;= &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;// 项目相关需求，千以下不加单位&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; num;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 保证前面至少留一位&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; len = num.length - &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; isFind = &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, length = units.length; i &amp;lt; length; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; item = units[i];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (len &amp;gt;= item.num &amp;amp;&amp;amp; len &amp;lt; units[i + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;].num) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                isFind = &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (i === (length - &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                isFind = &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                item = units[++i];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (isFind) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;comment&quot;&gt;// 确认区间后，返回前几位加上单位&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;`&lt;span class=&quot;subst&quot;&gt;$&amp;#123;num.slice(0, num.length - item.num)&amp;#125;&lt;/span&gt;&lt;span class=&quot;subst&quot;&gt;$&amp;#123;item.unit&amp;#125;&lt;/span&gt;`&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这段代码还有些坚固性等方面的问题，欢迎补充！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;所谓带单位，就是实现1000-&amp;gt;1千，259999-&amp;gt;25万，10020002-&amp;gt;1千万类似这样的处理&lt;/p&gt;
+&lt;p&gt;在介绍format的snippet之前，先来介绍一个很好用的库（虽然并没有什么关系）, &lt;a href=&quot;http://numeraljs.com/&quot;&gt;numeral.js&lt;/a&gt;, 有很多format的功能，譬如百分比转换，货币转换，单位换算，还能unformat, 配置不同的语言转换标准，真的十分强大。&lt;/p&gt;
+&lt;p&gt;&lt;Excerpt in index | 首页摘要&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+    
+    </summary>
+    
+      <category term="编程" scheme="xjinjin.net/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="javascript" scheme="xjinjin.net/tags/javascript/"/>
+    
+      <category term="snippet" scheme="xjinjin.net/tags/snippet/"/>
+    
+  </entry>
   
   <entry>
     <title>透明背景,可编辑下拉框</title>

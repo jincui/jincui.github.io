@@ -15,21 +15,19 @@
 
 
 
-<meta name="description" content="这种透明渐变的导航栏就是我们经常看到的随用户滚动改变透明度的导航栏，本次主要通过background-color的rgba值来实现
-原理：监听window的scroll事件，根据滚动值动态设置rgba值">
+<meta name="description" content="所谓带单位，就是实现1000-&amp;gt;1千，259999-&amp;gt;25万，10020002-&amp;gt;1千万类似这样的处理
+在介绍format的snippet之前，先来介绍一个很好用的库（虽然并没有什么关系）, numeral.js, 有很多format的功能，譬如百分比转换，货币转换，单位换算，还能unformat, 配置不同的语言转换标准，真的十分强大。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="web app透明渐变的导航栏">
-<meta property="og:url" content="xjinjin.net/2016/07/06/transparent-nav/index.html">
+<meta property="og:title" content="js数字format转换代码，带千，万，百万单位">
+<meta property="og:url" content="xjinjin.net/2016/08/12/unit-conversion/index.html">
 <meta property="og:site_name" content="小金金の技术博客">
-<meta property="og:description" content="这种透明渐变的导航栏就是我们经常看到的随用户滚动改变透明度的导航栏，本次主要通过background-color的rgba值来实现
-原理：监听window的scroll事件，根据滚动值动态设置rgba值">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/904e587bjw1f5kfdid90og20940fcduf.gif">
-<meta property="og:updated_time" content="2016-07-06T12:57:42.000Z">
+<meta property="og:description" content="所谓带单位，就是实现1000-&amp;gt;1千，259999-&amp;gt;25万，10020002-&amp;gt;1千万类似这样的处理
+在介绍format的snippet之前，先来介绍一个很好用的库（虽然并没有什么关系）, numeral.js, 有很多format的功能，譬如百分比转换，货币转换，单位换算，还能unformat, 配置不同的语言转换标准，真的十分强大。">
+<meta property="og:updated_time" content="2016-08-12T17:27:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="web app透明渐变的导航栏">
-<meta name="twitter:description" content="这种透明渐变的导航栏就是我们经常看到的随用户滚动改变透明度的导航栏，本次主要通过background-color的rgba值来实现
-原理：监听window的scroll事件，根据滚动值动态设置rgba值">
-<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/904e587bjw1f5kfdid90og20940fcduf.gif">
+<meta name="twitter:title" content="js数字format转换代码，带千，万，百万单位">
+<meta name="twitter:description" content="所谓带单位，就是实现1000-&amp;gt;1千，259999-&amp;gt;25万，10020002-&amp;gt;1千万类似这样的处理
+在介绍format的snippet之前，先来介绍一个很好用的库（虽然并没有什么关系）, numeral.js, 有很多format的功能，譬如百分比转换，货币转换，单位换算，还能unformat, 配置不同的语言转换标准，真的十分强大。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -61,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>web app透明渐变的导航栏 | 小金金の技术博客</title>
+<title>js数字format转换代码，带千，万，百万单位 | 小金金の技术博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -264,11 +262,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-transparent-nav" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-unit-conversion" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/06/transparent-nav/" class="article-date">
-      <time datetime="2016-07-06T12:35:12.000Z" itemprop="datePublished">2016-07-06</time>
+      <a href="/2016/08/12/unit-conversion/" class="article-date">
+      <time datetime="2016-08-12T13:30:37.000Z" itemprop="datePublished">2016-08-12</time>
 </a>
     </div>
   
@@ -281,7 +279,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      web app透明渐变的导航栏
+      js数字format转换代码，带千，万，百万单位
     </h1>
   
 
@@ -296,7 +294,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/snippet/">snippet</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -306,8 +304,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>这种透明渐变的导航栏就是我们经常看到的随用户滚动改变透明度的导航栏，本次主要通过background-color的rgba值来实现</p>
-<p>原理：监听window的scroll事件，根据滚动值动态设置rgba值</p>
+        <p>所谓带单位，就是实现1000-&gt;1千，259999-&gt;25万，10020002-&gt;1千万类似这样的处理</p>
+<p>在介绍format的snippet之前，先来介绍一个很好用的库（虽然并没有什么关系）, <a href="http://numeraljs.com/" target="_blank" rel="external">numeral.js</a>, 有很多format的功能，譬如百分比转换，货币转换，单位换算，还能unformat, 配置不同的语言转换标准，真的十分强大。</p>
 <p><excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
 <ul>
 <li><a id="more"></a>
@@ -315,13 +313,9 @@
 
 </the></li>
 </ul>
-<p>下图为一个简单的实现效果<br><img src="http://ww3.sinaimg.cn/large/904e587bjw1f5kfdid90og20940fcduf.gif" alt="实现效果"></p>
-<h2 id="最简实现"><a href="#最简实现" class="headerlink" title="最简实现"></a>最简实现</h2><p>html,css准备,一个nav bar，大家都会写的咯^.^<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">header</span> <span class="attr">id</span>=<span class="string">"header"</span> <span class="attr">style</span>=<span class="string">"background-color: rgba(247,247,247,0)"</span> <span class="attr">class</span>=<span class="string">"transparent_nav"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/back.png"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>导航栏<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.transparent_nav</span>&#123;</span><br><span class="line">      <span class="attribute">position</span>: fixed;</span><br><span class="line">      <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">      <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">      <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">      <span class="attribute">height</span>: <span class="number">44px</span>;</span><br><span class="line">      <span class="attribute">display</span>: block;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>接下来就是js部分，将window.scrollY减去一个基线值，如0,再将差与一个固定的offset值比较，如150，得出此时的rgba中的a值<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> header = <span class="built_in">document</span>.getElementById(<span class="string">"header"</span>)</span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">"scroll"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// top-0  offset-150</span></span><br><span class="line">    header.style.backgroundColor = <span class="string">"rgba(247,247,247,"</span>+(<span class="built_in">window</span>.scrollY<span class="number">-0</span>)/<span class="number">150</span>+<span class="string">")"</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
-<h2 id="进阶实现"><a href="#进阶实现" class="headerlink" title="进阶实现"></a>进阶实现</h2><p>将透明渐变方法封装一下，使得其可复用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Transparent = <span class="function"><span class="keyword">function</span>(<span class="params">element,option</span>)</span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.element = element;</span><br><span class="line">			<span class="keyword">this</span>.option = option || &#123;</span><br><span class="line">				offset:<span class="number">150</span>,</span><br><span class="line">				top:<span class="number">0</span>,</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">this</span>._style = <span class="keyword">this</span>.element.style</span><br><span class="line">			<span class="keyword">this</span>._bgColor = <span class="keyword">this</span>._style.backgroundColor</span><br><span class="line">			<span class="keyword">var</span> color = getColor(<span class="keyword">this</span>._bgColor)</span><br><span class="line">			<span class="keyword">this</span>.R = color[<span class="number">0</span>]</span><br><span class="line">			<span class="keyword">this</span>.G = color[<span class="number">1</span>]</span><br><span class="line">			<span class="keyword">this</span>.B = color[<span class="number">2</span>]</span><br><span class="line">			<span class="keyword">this</span>.handleScroll = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				<span class="keyword">this</span>._style.backgroundColor = <span class="string">"rgba("</span>+<span class="keyword">this</span>.R+<span class="string">","</span>+<span class="keyword">this</span>.G+<span class="string">","</span>+<span class="keyword">this</span>.B+<span class="string">","</span>+(<span class="built_in">window</span>.scrollY-<span class="keyword">this</span>.option.top)/<span class="keyword">this</span>.option.offset+<span class="string">")"</span></span><br><span class="line">			&#125;</span><br><span class="line">	        <span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, <span class="keyword">this</span>.handleScroll);</span><br><span class="line">		&#125;</span><br><span class="line">	  Transparent(header)</span><br></pre></td></tr></table></figure></p>
-<p>其中，getColor方法的作用是提取rgba的四个参数值，以数组形式返回，可以通过正则匹配，或者最简单的substring,split,想怎么实现这么实现咯！！</p>
-<p>就这么简单就完啦，撒花，撒花！！</p>
+<p>事实上，numeral.js库也提供了诸如这样的numeral(1000).format(‘0 a’) =&gt; 1 千 加单位的format功能，配置好中文语言标准即可。然而，似乎只能以3位分割，匹配到千，百万，亿这种（也许文档没看仔细），可我还想要万，千万呢，又或者自由位数分割，于是就有了下面这段代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">NumberUpperFormat</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// num - 位数</span></span><br><span class="line">        <span class="comment">// 简单理解后面要有三个0，则是千，4个零，则是万。当然不一定是零，位数到了就行，反正都会省略掉（未做四舍五入）</span></span><br><span class="line">        <span class="comment">// 可以随意的增删改units内容实现单位的配置</span></span><br><span class="line">        <span class="keyword">const</span> units = [</span><br><span class="line">          &#123;num: <span class="number">3</span>, unit: <span class="string">'千'</span>&#125;,</span><br><span class="line">          &#123;num: <span class="number">4</span>, unit: <span class="string">'万'</span>&#125;,</span><br><span class="line">          &#123;num: <span class="number">6</span>, unit: <span class="string">'百万'</span>&#125;,</span><br><span class="line">          &#123;num: <span class="number">7</span>, unit: <span class="string">'千万'</span>&#125;,</span><br><span class="line">          &#123;num: <span class="number">8</span>, unit: <span class="string">'亿'</span>&#125;</span><br><span class="line">        ];</span><br><span class="line">        <span class="comment">// 精确到整数，直接用js自带方法input.toFixed(0)也可以</span></span><br><span class="line">        <span class="keyword">const</span> num = numeral(input).format(<span class="string">'0'</span>);</span><br><span class="line">        <span class="keyword">if</span> (num.length &lt;= <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="comment">// 项目相关需求，千以下不加单位</span></span><br><span class="line">            <span class="keyword">return</span> num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 保证前面至少留一位</span></span><br><span class="line">        <span class="keyword">const</span> len = num.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">let</span> isFind = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, length = units.length; i &lt; length; i++) &#123;</span><br><span class="line">            <span class="keyword">let</span> item = units[i];</span><br><span class="line">            <span class="keyword">if</span> (len &gt;= item.num &amp;&amp; len &lt; units[i + <span class="number">1</span>].num) &#123;</span><br><span class="line">                isFind = <span class="literal">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i === (length - <span class="number">2</span>)) &#123;</span><br><span class="line">                isFind = <span class="literal">true</span>;</span><br><span class="line">                item = units[++i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (isFind) &#123;</span><br><span class="line">                <span class="comment">// 确认区间后，返回前几位加上单位</span></span><br><span class="line">                <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;num.slice(0, num.length - item.num)&#125;</span><span class="subst">$&#123;item.unit&#125;</span>`</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码还有些坚固性等方面的问题，欢迎补充！</p>
 
       
     </div>
@@ -330,13 +324,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/07/06/transparent-nav/">web app透明渐变的导航栏</a></p>
+        <p><span>本文标题:</span><a href="/2016/08/12/unit-conversion/">js数字format转换代码，带千，万，百万单位</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">jc小金金</a></p>
-        <p><span>发布时间:</span>2016-07-06, 20:35:12</p>
-        <p><span>最后更新:</span>2016-07-06, 20:57:42</p>
+        <p><span>发布时间:</span>2016-08-12, 21:30:37</p>
+        <p><span>最后更新:</span>2016-08-13, 01:27:32</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/07/06/transparent-nav/" title="web app透明渐变的导航栏">xjinjin.net/2016/07/06/transparent-nav/</a>
-            <span class="copy-path" data-clipboard-text="原文: xjinjin.net/2016/07/06/transparent-nav/　　作者: jc小金金" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/08/12/unit-conversion/" title="js数字format转换代码，带千，万，百万单位">xjinjin.net/2016/08/12/unit-conversion/</a>
+            <span class="copy-path" data-clipboard-text="原文: xjinjin.net/2016/08/12/unit-conversion/　　作者: jc小金金" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -348,16 +342,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/07/15/transparent-editable-select/">
-                    透明背景,可编辑下拉框
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/06/03/timeline-of-android/">
-                    自定义android时间轴控件
+                <a href="/2016/07/15/transparent-editable-select/">
+                    透明背景,可编辑下拉框
                 </a>
             </div>
         
@@ -368,7 +356,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#最简实现"><span class="toc-number">1.</span> <span class="toc-text">最简实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶实现"><span class="toc-number">2.</span> <span class="toc-text">进阶实现</span></a></li></ol>
+    
 </div>
 <style>
     .left-col .switch-btn {
@@ -425,7 +413,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"web app透明渐变的导航栏　| 小金金の技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"js数字format转换代码，带千，万，百万单位　| 小金金の技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -441,7 +429,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/07/06/transparent-nav/" data-title="web app透明渐变的导航栏" data-url="xjinjin.net/2016/07/06/transparent-nav/"></div>
+    <div class="ds-thread" data-thread-key="2016/08/12/unit-conversion/" data-title="js数字format转换代码，带千，万，百万单位" data-url="xjinjin.net/2016/08/12/unit-conversion/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -465,15 +453,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/07/15/transparent-editable-select/" title="上一篇: 透明背景,可编辑下拉框">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/06/03/timeline-of-android/" title="下一篇: 自定义android时间轴控件">
+            <a href="/2016/07/15/transparent-editable-select/" title="下一篇: 透明背景,可编辑下拉框">
                 <i class="fa fa-angle-right"></i>
             </a>
         
