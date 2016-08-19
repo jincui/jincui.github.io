@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="xjinjin" />
+
+
+
+<meta name="description" content="最近因为项目需求，需要使用webpack构建一个静态的多页应用，譬如主页网站之类。本文主要来解析一下按功能模块划分的项目结构，再重点分析webpack的配置文件。项目源码github地址
+view engine使用jade, css 预编译使用stylus，这个影响不大。首先，我们来看一下项目的基本结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack构建静态多页应用项目框架">
+<meta property="og:url" content="xjinjin.net/2016/08/20/webpack-multiple-page-static/index.html">
+<meta property="og:site_name" content="金金求上进">
+<meta property="og:description" content="最近因为项目需求，需要使用webpack构建一个静态的多页应用，譬如主页网站之类。本文主要来解析一下按功能模块划分的项目结构，再重点分析webpack的配置文件。项目源码github地址
+view engine使用jade, css 预编译使用stylus，这个影响不大。首先，我们来看一下项目的基本结构">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/904e587bjw1f6zlja79o5j21kw0xddmk.jpg">
+<meta property="og:updated_time" content="2016-08-19T18:25:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack构建静态多页应用项目框架">
+<meta name="twitter:description" content="最近因为项目需求，需要使用webpack构建一个静态的多页应用，譬如主页网站之类。本文主要来解析一下按功能模块划分的项目结构，再重点分析webpack的配置文件。项目源码github地址
+view engine使用jade, css 预编译使用stylus，这个影响不大。首先，我们来看一下项目的基本结构">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/904e587bjw1f6zlja79o5j21kw0xddmk.jpg">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternative" href="/atom.xml" title="金金求上进" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>webpack构建静态多页应用项目框架 | 金金求上进</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">xjinjin</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">一只啥也不行的全沾程序媛，一位资深腐女</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1191138096@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/u/2421053563/home?wvr=5" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/jincui" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BL/">BL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snippet/">snippet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小控件/">小控件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/盘点/">盘点</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">xjinjin</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">xjinjin</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">一只啥也不行的全沾程序媛，一位资深腐女</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1191138096@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/u/2421053563/home?wvr=5" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/jincui" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-webpack-multiple-page-static" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/20/webpack-multiple-page-static/" class="article-date">
+      <time datetime="2016-08-19T17:02:10.000Z" itemprop="datePublished">2016-08-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      webpack构建静态多页应用项目框架
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>最近因为项目需求，需要使用webpack构建一个静态的多页应用，譬如主页网站之类。本文主要来解析一下按功能模块划分的项目结构，再重点分析webpack的配置文件。<a href="https://github.com/jincui/webpack-multiplepage" target="_blank" rel="external">项目源码github地址</a></p>
+<p>view engine使用jade, css 预编译使用stylus，这个影响不大。<br>首先，我们来看一下项目的基本结构</p>
+<p><excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
+<ul>
+<li><a id="more"></a>
+<the rest="" of="" contents="" |="" 余下全文=""><h2 id="项目基本结构"><a href="#项目基本结构" class="headerlink" title="项目基本结构"></a>项目基本结构</h2></the></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">- webpack-multiplepage</span><br><span class="line"> + build</span><br><span class="line"> - source</span><br><span class="line">   - components   ＃组件</span><br><span class="line">     - common</span><br><span class="line">       + styles   #公共样式</span><br><span class="line">     + header    #头部组件</span><br><span class="line">     + footer    </span><br><span class="line">     - layout    #布局组件</span><br><span class="line">       index.js   ＃layout入口文件，,可导入依赖，及写一些逻辑代码</span><br><span class="line">       layout.styl    #layout样式</span><br><span class="line">       bg.png</span><br><span class="line">       layout.jade   #页面布局jade，include了header.jade和footer.jade</span><br><span class="line">   - pages    ＃页面</span><br><span class="line">     + about   #关于模块</span><br><span class="line">     + help    #帮助模块</span><br><span class="line">     - index   #首页模块</span><br><span class="line">       index.jade    #首页内容，extends layout.jade</span><br><span class="line">       index.js    #首页入口文件,可导入依赖，及写一些逻辑代码</span><br><span class="line">       index.styl    #首页样式</span><br><span class="line"> .eslintrc</span><br><span class="line"> .eslintignore</span><br><span class="line"> .gitignore</span><br><span class="line"> webpack.config.js    #webpack配置文件</span><br><span class="line"> package.json</span><br><span class="line"> README.md</span><br></pre></td></tr></table></figure>
+<p>layout组件是所有页面公用的布局组件，各个页面入口以<code>require(&#39;../../components/layout&#39;)</code>的方式引入，各个页面jade模版继承于layout.jade</p>
+<p>同时layout/index.js中<code>require(&#39;../header&#39;)</code>和<code>require(&#39;../footer&#39;)</code>的方式引入header和footer模块(可以直接将header,footer有关代码写在layout中，不单独拎出)</p>
+<p>项目上线时，以下是用webpack build之后的结果</p>
+<h2 id="打包结果"><a href="#打包结果" class="headerlink" title="打包结果"></a>打包结果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">- build</span><br><span class="line">  - assets    #字体，图片资源</span><br><span class="line">    + fonts</span><br><span class="line">    + images</span><br><span class="line">  - common    #公用文件，包含了第三方依赖和抽离出来的公共代码</span><br><span class="line">    common.****.js  </span><br><span class="line">    common.****.css</span><br><span class="line">  - about   ＃about模块</span><br><span class="line">    about.****.js   </span><br><span class="line">    about.****.css</span><br><span class="line">    about.html</span><br><span class="line">  + help</span><br><span class="line">  - index</span><br><span class="line">    index.****.js</span><br><span class="line">    index.****.css</span><br><span class="line">  index.html    #index首页置于根目录，方便webpack监听</span><br></pre></td></tr></table></figure>
+<h2 id="webpack-config-js文件解析"><a href="#webpack-config-js文件解析" class="headerlink" title="webpack.config.js文件解析"></a>webpack.config.js文件解析</h2><p>build过程可以通过webpack.config.js文件进行灵活的配置，下面详细解释该文件，请看注释。<br>有关webpack的用法和各个插件的用法可以查看<a href="http://webpack.github.io/docs/" target="_blank" rel="external">官方文档</a>，<a href="http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin" target="_blank" rel="external">插件列表</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 依赖</span></span><br><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">var</span> ExtractTextPlugin = <span class="built_in">require</span>(<span class="string">'extract-text-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">var</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">var</span> CopyWebpackPlugin = <span class="built_in">require</span>(<span class="string">'copy-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">var</span> autoprefixer = <span class="built_in">require</span>(<span class="string">'autoprefixer'</span>);</span><br><span class="line"><span class="keyword">var</span> args = <span class="built_in">require</span>(<span class="string">'yargs'</span>).argv;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 命令行传入的环境参数</span></span><br><span class="line"><span class="comment">// 可通过--prod,--mock传入</span></span><br><span class="line"><span class="keyword">var</span> isProd = args.prod;</span><br><span class="line"><span class="keyword">var</span> isMock = args.mock;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> plugins = [</span><br><span class="line">   <span class="comment">// Automatically loaded modules</span></span><br><span class="line">   <span class="keyword">new</span> webpack.ProvidePlugin(&#123;</span><br><span class="line">       $: <span class="string">'jquery'</span>,</span><br><span class="line">       jQuery: <span class="string">'jquery'</span>,</span><br><span class="line">       <span class="string">'window.jQuery'</span>: <span class="string">'jquery'</span></span><br><span class="line">   &#125;),</span><br><span class="line">   <span class="comment">// create global constants which can be configured at compile time</span></span><br><span class="line">   <span class="keyword">new</span> webpack.DefinePlugin(&#123;</span><br><span class="line">       __PROD__: isProd,</span><br><span class="line">       __MOCK__: isMock</span><br><span class="line">   &#125;),</span><br><span class="line">   <span class="comment">// 抽取公共模块</span></span><br><span class="line">   <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(<span class="string">'common'</span>, isProd ? <span class="string">'common/common.[hash].js'</span> : <span class="string">'common/common.js'</span>),</span><br><span class="line">   <span class="comment">// 对每个entry抽取css依赖,生成css文件</span></span><br><span class="line">   <span class="comment">// 注意：ExtractTextPlugin需在config的plugin及loader中一起使用</span></span><br><span class="line">   <span class="keyword">new</span> ExtractTextPlugin(isProd ? <span class="string">'[name]/[name].[contenthash].css'</span> : <span class="string">'[name]/[name].css'</span>),</span><br><span class="line">   <span class="comment">// 热替换</span></span><br><span class="line">   <span class="keyword">new</span> webpack.HotModuleReplacementPlugin()</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成html，并为html插入css,js等依赖</span></span><br><span class="line"><span class="comment">// 将首页的index.html 置于根目录</span></span><br><span class="line">plugins.push(</span><br><span class="line">   <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">       template: <span class="string">'./source/pages/index/index.jade'</span>,</span><br><span class="line">       filename: <span class="string">'index.html'</span>,</span><br><span class="line">       chunks: [<span class="string">'common'</span>, <span class="string">'index'</span>]</span><br><span class="line">   &#125;),</span><br><span class="line">   <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">       template: <span class="string">'./source/pages/help/help.jade'</span>,</span><br><span class="line">       filename: <span class="string">'help/index.html'</span>,</span><br><span class="line">       chunks: [<span class="string">'common'</span>, <span class="string">'help'</span>]</span><br><span class="line">   &#125;),</span><br><span class="line">   <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">       template: <span class="string">'./source/pages/about/about.jade'</span>,</span><br><span class="line">       filename: <span class="string">'about/index.html'</span>,</span><br><span class="line">       chunks: [<span class="string">'common'</span>, <span class="string">'about'</span>]</span><br><span class="line">   &#125;)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> base = <span class="string">'./'</span>;</span><br><span class="line"><span class="comment">// 多个入口文件集合</span></span><br><span class="line"><span class="keyword">var</span> entryJs = &#123;</span><br><span class="line">   index: [base + <span class="string">'/source/pages/index/index.js'</span>],</span><br><span class="line">   help: [base + <span class="string">'/source/pages/help/help.js'</span>],</span><br><span class="line">   about: [base + <span class="string">'/source/pages/about/about.js'</span>]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 通用第三方模块 ，最后和抽离的公共模块合并</span></span><br><span class="line">entryJs[<span class="string">'common'</span>] = [</span><br><span class="line">   <span class="comment">// 3rd dependencies</span></span><br><span class="line">   <span class="string">'normalize.css/normalize.css'</span>,</span><br><span class="line">   <span class="string">'bootstrap/dist/js/bootstrap.min'</span>,</span><br><span class="line">   <span class="string">'bootstrap/dist/css/bootstrap.min.css'</span>,</span><br><span class="line">   <span class="string">'font-awesome/css/font-awesome.min.css'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (isProd) &#123;</span><br><span class="line">  <span class="comment">// 生产环境优化</span></span><br><span class="line">   plugins.push(</span><br><span class="line">       <span class="keyword">new</span> webpack.NoErrorsPlugin(),</span><br><span class="line">       <span class="comment">// Search for equal or similar files and deduplicate them in the output.</span></span><br><span class="line">       <span class="keyword">new</span> webpack.optimize.DedupePlugin(),</span><br><span class="line">       <span class="comment">// Minimize all JavaScript output of chunks</span></span><br><span class="line">       <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(&#123;</span><br><span class="line">           compress: &#123;</span><br><span class="line">               warnings: <span class="literal">false</span></span><br><span class="line">           &#125;,</span><br><span class="line">           mangle: <span class="literal">false</span></span><br><span class="line">       &#125;),</span><br><span class="line">       <span class="keyword">new</span> webpack.optimize.OccurenceOrderPlugin()</span><br><span class="line">   );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">   entry: entryJs,</span><br><span class="line">   <span class="comment">// 打包文件输出配置</span></span><br><span class="line">   output: &#123;</span><br><span class="line">       path: base + <span class="string">'build'</span>,</span><br><span class="line">       <span class="comment">// e.g index/index.****.js</span></span><br><span class="line">       filename: isProd ? <span class="string">'[name]/[name].[hash].js'</span> : <span class="string">'[name]/[name].js'</span>,</span><br><span class="line">       chunkFilename: isProd ? <span class="string">'[name]/[name].[hash].chunk.js'</span> : <span class="string">'[name]/[name].chunk.js'</span></span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="built_in">module</span>: &#123;</span><br><span class="line">       preLoaders: [&#123;</span><br><span class="line">           test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">           loader: <span class="string">'eslint'</span>,</span><br><span class="line">           exclude: <span class="regexp">/node_modules/</span></span><br><span class="line">       &#125;],</span><br><span class="line">       loaders: [&#123;</span><br><span class="line">           test: <span class="regexp">/\.html$/</span>,</span><br><span class="line">           loader: <span class="string">'html'</span></span><br><span class="line">       &#125;, &#123;</span><br><span class="line">           test: <span class="regexp">/\.jade$/</span>,</span><br><span class="line">           loader: <span class="string">'jade'</span></span><br><span class="line">       &#125;, &#123;</span><br><span class="line">           test: <span class="regexp">/\.styl$/</span>,</span><br><span class="line">           loader: ExtractTextPlugin.extract(<span class="string">'vue-style'</span>, <span class="string">'css?sourceMap!postcss!stylus'</span>, &#123;</span><br><span class="line">             <span class="comment">// 指定build根目录对css打包存储位置的路径，默认css直接放在根目录下</span></span><br><span class="line">             <span class="comment">// 各个css均被打包到build/*/文件夹中，所以路径为'../'</span></span><br><span class="line">               publicPath: <span class="string">'../'</span></span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;, &#123;</span><br><span class="line">           test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">           loader: ExtractTextPlugin.extract(<span class="string">'vue-style'</span>, <span class="string">'css?sourceMap'</span>, &#123;</span><br><span class="line">               publicPath: <span class="string">'../'</span></span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;, &#123;</span><br><span class="line">           test: <span class="regexp">/\.(woff|woff2|ttf|eot|svg)(\?]?.*)?$/</span>,</span><br><span class="line">           loader: <span class="string">'file?name=assets/fonts/[name].[ext]?[hash]'</span></span><br><span class="line">       &#125;, &#123;</span><br><span class="line">           test: <span class="regexp">/\.(png|jpg)$/</span>,</span><br><span class="line">           loader: <span class="string">'url?limit=8192&amp;name=assets/images/[name].[hash].[ext]'</span></span><br><span class="line">       &#125;]</span><br><span class="line">   &#125;,</span><br><span class="line">   plugins: plugins,</span><br><span class="line">   debug: !isProd,</span><br><span class="line">   <span class="comment">// sourceMap的几种模式差别解析，可参考https://segmentfault.com/a/1190000004280859这篇文章</span></span><br><span class="line">   devtool: isProd ? <span class="literal">false</span> : <span class="string">'eval-cheap-module-source-map'</span>,</span><br><span class="line">   <span class="comment">// 可访问localhost:8080查看效果</span></span><br><span class="line">   devServer: &#123;</span><br><span class="line">       contentBase: base + <span class="string">'build'</span>,</span><br><span class="line">       historyApiFallback: <span class="literal">true</span>,</span><br><span class="line">       inline: <span class="literal">true</span>,</span><br><span class="line">       stats: &#123;</span><br><span class="line">           modules: <span class="literal">false</span>,</span><br><span class="line">           cached: <span class="literal">false</span>,</span><br><span class="line">           colors: <span class="literal">true</span>,</span><br><span class="line">           chunk: <span class="literal">false</span></span><br><span class="line">       &#125;,</span><br><span class="line">       host: <span class="string">'0.0.0.0'</span>,</span><br><span class="line">       port: <span class="number">8080</span></span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="comment">// 使用postcss自动给css样式加前缀</span></span><br><span class="line">   postcss: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> [autoprefixer];</span><br><span class="line">   &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="配置优化"><a href="#配置优化" class="headerlink" title="配置优化?"></a>配置优化?</h3><p>以上的webpack配置有一个小小的问题，就是每次我添加一个新的页面模块时，比如product页面，需要手动在webpack.config文件里添加一个entry入口和HtmlWebpackPlugin。所以可以尝试用以下的的方法解决。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// npm install --save-dev glob</span></span><br><span class="line"><span class="keyword">var</span> getFiles = <span class="function"><span class="keyword">function</span>(<span class="params">filepath</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">var</span> files = glob.sync(filepath);</span><br><span class="line"> <span class="keyword">var</span> entries = &#123;&#125;;</span><br><span class="line"> files.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> pathname = path.basename(item, path.extname(item))</span><br><span class="line">   entries[pathname] = item;</span><br><span class="line"> &#125;);</span><br><span class="line"> <span class="keyword">return</span> entries;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pages = getFiles(<span class="string">'./source/pages/*/*.jade'</span>);</span><br><span class="line"><span class="comment">// 生成html，插入依赖</span></span><br><span class="line"><span class="built_in">Object</span>.keys(pages).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">pageName</span>)</span>&#123;</span><br><span class="line">   plugins.push(</span><br><span class="line">     <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">         template: <span class="string">'./source/pages/'</span>+ pageName+ <span class="string">'/'</span> pageName + <span class="string">'.jade'</span>,</span><br><span class="line">         filename: pageName +<span class="string">'.html'</span>,</span><br><span class="line">         chunks: [ <span class="string">'vendor'</span>, pageName],</span><br><span class="line">     &#125;)</span><br><span class="line">   );</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> entryJs = getFiles(<span class="string">'./source/pages/*/*.js'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>遵循目录结构的话，这样写应该不会有什么问题。</p>
+<h2 id="demo效果"><a href="#demo效果" class="headerlink" title="demo效果"></a>demo效果</h2><p>仅仅搭了一个架子，尚未进行项目编写，后续可能遇到一些实际问题，再做补充。<br>最后放一张运行结果图<br><img src="http://ww4.sinaimg.cn/large/904e587bjw1f6zlja79o5j21kw0xddmk.jpg" alt="demo运行图"></p>
+<p>参考项目：</p>
+<ul>
+<li><a href="https://github.com/PinkyJie/angular1-webpack-starter" target="_blank" rel="external">angular1-webpack-starter</a></li>
+<li><a href="https://github.com/vhtml/webpack-MultiPage-static" target="_blank" rel="external">webpack-MultiPage-static</a></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/08/20/webpack-multiple-page-static/">webpack构建静态多页应用项目框架</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">xjinjin</a></p>
+        <p><span>发布时间:</span>2016-08-20, 01:02:10</p>
+        <p><span>最后更新:</span>2016-08-20, 02:25:55</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/08/20/webpack-multiple-page-static/" title="webpack构建静态多页应用项目框架">xjinjin.net/2016/08/20/webpack-multiple-page-static/</a>
+            <span class="copy-path" data-clipboard-text="原文: xjinjin.net/2016/08/20/webpack-multiple-page-static/　　作者: xjinjin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/08/14/bl-game-moved/">
+                    BL游戏盘点感动瞬间（一）——鬼畜眼镜，lamento
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目基本结构"><span class="toc-number">1.</span> <span class="toc-text">项目基本结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打包结果"><span class="toc-number">2.</span> <span class="toc-text">打包结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack-config-js文件解析"><span class="toc-number">3.</span> <span class="toc-text">webpack.config.js文件解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置优化"><span class="toc-number">3.1.</span> <span class="toc-text">配置优化?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#demo效果"><span class="toc-number">4.</span> <span class="toc-text">demo效果</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"webpack构建静态多页应用项目框架　| 金金求上进　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/08/20/webpack-multiple-page-static/" data-title="webpack构建静态多页应用项目框架" data-url="xjinjin.net/2016/08/20/webpack-multiple-page-static/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xjinjin"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/08/14/bl-game-moved/" title="下一篇: BL游戏盘点感动瞬间（一）——鬼畜眼镜，lamento">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/08/20/webpack-multiple-page-static/">webpack构建静态多页应用项目框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/14/bl-game-moved/">BL游戏盘点感动瞬间（一）——鬼畜眼镜，lamento</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/unit-conversion/">js数字format转换代码，带千，万，百万单位</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/15/transparent-editable-select/">透明背景,可编辑下拉框</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/06/transparent-nav/">web app透明渐变的导航栏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/03/timeline-of-android/">自定义android时间轴控件</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 xjinjin
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.0">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
