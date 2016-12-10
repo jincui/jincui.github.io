@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[angular 自定义form表单input range validate]]></title>
+      <title><![CDATA[angular 自定义form表单验证控件]]></title>
       <url>xjinjin.net/2016/12/10/angular-input-validate/</url>
       <content type="html"><![CDATA[<p>angular的form体系，为我们做表单验证提供了很大的便利.</p>
 <ul>

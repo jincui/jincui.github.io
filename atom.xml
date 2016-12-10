@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="xjinjin.net/"/>
-  <updated>2016-12-10T11:04:50.000Z</updated>
+  <updated>2016-12-10T16:04:16.000Z</updated>
   <id>xjinjin.net/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>angular 自定义form表单input range validate</title>
+    <title>angular 自定义form表单验证控件</title>
     <link href="xjinjin.net/2016/12/10/angular-input-validate/"/>
     <id>xjinjin.net/2016/12/10/angular-input-validate/</id>
     <published>2016-12-10T10:55:02.000Z</published>
-    <updated>2016-12-10T11:04:50.000Z</updated>
+    <updated>2016-12-10T16:04:16.000Z</updated>
     
     <content type="html">&lt;p&gt;angular的form体系，为我们做表单验证提供了很大的便利.&lt;/p&gt;
 &lt;ul&gt;
