@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="xjinjin.net/"/>
-  <updated>2016-12-10T10:57:21.000Z</updated>
+  <updated>2016-12-10T11:00:15.000Z</updated>
   <id>xjinjin.net/</id>
   
   <author>
@@ -20,14 +20,14 @@
     <link href="xjinjin.net/2016/12/10/angular-input-validate/"/>
     <id>xjinjin.net/2016/12/10/angular-input-validate/</id>
     <published>2016-12-10T10:55:02.000Z</published>
-    <updated>2016-12-10T10:57:21.000Z</updated>
+    <updated>2016-12-10T11:00:15.000Z</updated>
     
     <content type="html">&lt;p&gt;angular的form体系，为我们做表单验证提供了很大的便利.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;它会为我们的表单元素添加标识不同状态的class，我们可以set对应样式控制元素表现&lt;/li&gt;
 &lt;li&gt;根据form的$valid, $toched等状态属性控制元素行为，譬如对submit button添加上(ng-disabled=”form.$invalid”)属性，输入不合法时禁止提交&lt;/li&gt;
 &lt;li&gt;在controller里，通过form的$setValidity, $comitViewVaue 等方法，进行一系列的form交互控制。&lt;/li&gt;
-&lt;li&gt;再比如，自定义form内元素的验证行为，比如自定义一个numRangeValidate的directive，绑到form里的input上去，验证输入范围。&lt;/li&gt;
+&lt;li&gt;再比如，自定义form内元素的验证行为，如自定义一个numRangeValidate的directive，绑到form里的input上去，验证输入范围。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt;&lt;/excerpt&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -59,7 +59,7 @@
 &lt;li&gt;它会为我们的表单元素添加标识不同状态的class，我们可以set对应样式控制元素表现&lt;/li&gt;
 &lt;li&gt;根据form的$valid, $toched等状态属性控制元素行为，譬如对submit button添加上(ng-disabled=”form.$invalid”)属性，输入不合法时禁止提交&lt;/li&gt;
 &lt;li&gt;在controller里，通过form的$setValidity, $comitViewVaue 等方法，进行一系列的form交互控制。&lt;/li&gt;
-&lt;li&gt;再比如，自定义form内元素的验证行为，比如自定义一个numRangeValidate的directive，绑到form里的input上去，验证输入范围。&lt;/li&gt;
+&lt;li&gt;再比如，自定义form内元素的验证行为，如自定义一个numRangeValidate的directive，绑到form里的input上去，验证输入范围。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;Excerpt in index | 首页摘要&gt;&lt;/p&gt;
 &lt;ul&gt;
