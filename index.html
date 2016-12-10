@@ -190,7 +190,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BL/">BL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snippet/">snippet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小控件/">小控件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/盘点/">盘点</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BL/">BL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snippet/">snippet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小控件/">小控件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/盘点/">盘点</a></li></ul>
                     </div>
                 </section>
                 
@@ -265,11 +265,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-bl-game-moved-3" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-angular-input-validate" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/09/25/bl-game-moved-3/" class="article-date">
-      <time datetime="2016-09-25T09:19:24.000Z" itemprop="datePublished">2016-09-25</time>
+      <a href="/2016/12/10/angular-input-validate/" class="article-date">
+      <time datetime="2016-12-10T10:55:02.000Z" itemprop="datePublished">2016-12-10</time>
 </a>
     </div>
   
@@ -282,7 +282,82 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/25/bl-game-moved-3/">BL游戏盘点感动瞬间（三）—— 咎狗之血，sweet pool</a>
+      <a class="article-title" href="/2016/12/10/angular-input-validate/">angular 自定义form表单input range validate</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>angular的form体系，为我们做表单验证提供了很大的便利.</p>
+<ul>
+<li>它会为我们的表单元素添加标识不同状态的class，我们可以set对应样式控制元素表现</li>
+<li>根据form的$valid, $toched等状态属性控制元素行为，譬如对submit button添加上(ng-disabled=”form.$invalid”)属性，输入不合法时禁止提交</li>
+<li>在controller里，通过form的$setValidity, $comitViewVaue 等方法，进行一系列的form交互控制。</li>
+<li>再比如，自定义form内元素的验证行为，比如自定义一个numRangeValidate的directive，绑到form里的input上去，验证输入范围。</li>
+</ul>
+<p><Excerpt in index | 首页摘要></p>
+<ul>
+<li>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2016/12/10/angular-input-validate/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-bl-game-moved-3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/25/bl-game-moved-3/" class="article-date">
+      <time datetime="2016-10-25T09:19:24.000Z" itemprop="datePublished">2016-10-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/25/bl-game-moved-3/">BL游戏盘点感动瞬间（三）—— 咎狗之血，sweet pool</a>
     </h1>
   
 
@@ -317,7 +392,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2016/09/25/bl-game-moved-3/#more">阅读全文 >></a>
+          <a href="/2016/10/25/bl-game-moved-3/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
