@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="xjinjin" />
+
+
+
+<meta name="description" content="总觉得css的伪元素是很有用的东西，平常用的最多的就是last-child, first-child(设置表格边框样式)，before, after…能通过css直接实现的东西，效果还ok的话，当然最好还是用css啦，而且兼容性也很好。下面列举了一些使用伪元素before, after实现的例子">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css伪元素before,after实现的一些效果">
+<meta property="og:url" content="xjinjin.net/2017/01/25/css-before-after/index.html">
+<meta property="og:site_name" content="金金求上进">
+<meta property="og:description" content="总觉得css的伪元素是很有用的东西，平常用的最多的就是last-child, first-child(设置表格边框样式)，before, after…能通过css直接实现的东西，效果还ok的话，当然最好还是用css啦，而且兼容性也很好。下面列举了一些使用伪元素before, after实现的例子">
+<meta property="og:image" content="https://dn-9tekbcca.qbox.me/c0e29c6f9393dc61decc.png">
+<meta property="og:image" content="https://dn-9tekbcca.qbox.me/5dd9412e1448c59f8b0d.gif">
+<meta property="og:updated_time" content="2017-01-25T14:33:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css伪元素before,after实现的一些效果">
+<meta name="twitter:description" content="总觉得css的伪元素是很有用的东西，平常用的最多的就是last-child, first-child(设置表格边框样式)，before, after…能通过css直接实现的东西，效果还ok的话，当然最好还是用css啦，而且兼容性也很好。下面列举了一些使用伪元素before, after实现的例子">
+<meta name="twitter:image" content="https://dn-9tekbcca.qbox.me/c0e29c6f9393dc61decc.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternative" href="/atom.xml" title="金金求上进" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>css伪元素before,after实现的一些效果 | 金金求上进</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">xjinjin</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">一只修炼中的全沾程序媛，一位资深腐女</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1191138096@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/u/2421053563/home?wvr=5" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/jincui" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BL/">BL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snippet/">snippet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小控件/">小控件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/盘点/">盘点</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">xjinjin</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">xjinjin</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">一只修炼中的全沾程序媛，一位资深腐女</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1191138096@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/u/2421053563/home?wvr=5" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/jincui" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-css-before-after" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/25/css-before-after/" class="article-date">
+      <time datetime="2017-01-25T11:54:35.000Z" itemprop="datePublished">2017-01-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      css伪元素before,after实现的一些效果
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>总觉得css的伪元素是很有用的东西，平常用的最多的就是last-child, first-child(设置表格边框样式)，before, after…<br>能通过css直接实现的东西，效果还ok的话，当然最好还是用css啦，而且兼容性也很好。<br>下面列举了一些使用伪元素before, after实现的例子</p>
+<p><excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
+<ul>
+<li><a id="more"></a>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+</the></li>
+</ul>
+<p><img src="https://dn-9tekbcca.qbox.me/c0e29c6f9393dc61decc.png" alt="示例图"></p>
+<p><img src="https://dn-9tekbcca.qbox.me/5dd9412e1448c59f8b0d.gif" alt="hover效果"></p>
+<p>这些例子大都通过对元素设置<code>position:relative</code>，其before, after<code>position:absolute</code>来布局。<br>仅贴出部分css代码，具体代码可访问文末的codepen地址</p>
+<h2 id="不规则背景图-图片"><a href="#不规则背景图-图片" class="headerlink" title="不规则背景图/图片"></a>不规则背景图/图片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">// html部分-pug</span><br><span class="line">.card-wrapper</span><br><span class="line">    .bg</span><br><span class="line">    .content</span><br><span class="line"></span><br><span class="line">// css部分-stylus</span><br><span class="line">.card-wrapper</span><br><span class="line">    width 300px</span><br><span class="line">    height 500px</span><br><span class="line">    overflow hidden</span><br><span class="line">    border-radius 10px</span><br><span class="line">    box-shadow 0px 0px 15px ＃fff</span><br><span class="line">    .bg</span><br><span class="line">        width 100%</span><br><span class="line">        height 250px</span><br><span class="line">        background-image url(&apos;http://img1.3lian.com/2015/a1/20/d/136.jpg&apos;)</span><br><span class="line">        background-position 80% 42%</span><br><span class="line">    .content</span><br><span class="line">         background #fff</span><br><span class="line">         height 250px</span><br><span class="line">         padding 10px</span><br><span class="line">         position relative</span><br><span class="line">         &amp;::before</span><br><span class="line">           content &apos;&apos;</span><br><span class="line">           border-color transparent #fff #fff transparent</span><br><span class="line">           border-width 30px 150px 30px 150px</span><br><span class="line">           border-style solid</span><br><span class="line">           position absolute</span><br><span class="line">           top -60px</span><br><span class="line">           left 0px</span><br></pre></td></tr></table></figure>
+<p>和图层设计类似，content的before是一块三角区域，遮挡了图片的一部分，形成不规则图片的效果</p>
+<h2 id="不完整边框"><a href="#不完整边框" class="headerlink" title="不完整边框"></a>不完整边框</h2><p>就是指卡片上方的文字左上角和右下角的边框，也可以用这样的方式给文字始末加上特殊样式的引号，书名号等符号。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">// html部分-pug</span><br><span class="line">span.corner-border-btn</span><br><span class="line"></span><br><span class="line">// css部分-stylus</span><br><span class="line">$borderSize = 12px</span><br><span class="line">$borderPadding = 10px</span><br><span class="line">.corner-border-btn</span><br><span class="line">    color #000</span><br><span class="line">    position relative</span><br><span class="line">    cursor pointer</span><br><span class="line">    top 30%</span><br><span class="line">    padding 0px 10px</span><br><span class="line">    transition all .5s</span><br><span class="line">    &amp;:hover</span><br><span class="line">        padding 0px 30px</span><br><span class="line">        font-size 1.2rem</span><br><span class="line">    &amp;:before, &amp;:after</span><br><span class="line">        content &apos;&apos;</span><br><span class="line">        position absolute</span><br><span class="line">        width $borderSize</span><br><span class="line">        height $borderSize</span><br><span class="line">    &amp;:before</span><br><span class="line">        border-left 1px solid #000</span><br><span class="line">        border-top 1px solid #000</span><br><span class="line">        left -($borderPadding)</span><br><span class="line">        top -($borderPadding)</span><br><span class="line">    &amp;:after</span><br><span class="line">        border-right 1px solid #000</span><br><span class="line">        border-bottom 1px solid #000</span><br><span class="line">        bottom -($borderPadding)</span><br><span class="line">        right -($borderPadding)</span><br></pre></td></tr></table></figure></p>
+<h2 id="表格hover行列高亮"><a href="#表格hover行列高亮" class="headerlink" title="表格hover行列高亮"></a>表格hover行列高亮</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">// html部分-pug</span><br><span class="line">table.hover-link-table</span><br><span class="line">    ... // 内容部分 tr td</span><br><span class="line"></span><br><span class="line">// css部分-stylus</span><br><span class="line">.hover-link-table</span><br><span class="line">  border 1px solid #ccc</span><br><span class="line">  table-layout fixed</span><br><span class="line">  border-collapse collapse</span><br><span class="line">  overflow hidden // 必须</span><br><span class="line">  tr:not(:last-child)</span><br><span class="line">    border-bottom 1px solid #ccc</span><br><span class="line">  tr td:not(:last-child)</span><br><span class="line">    border-right 1px solid #ccc</span><br><span class="line">  td</span><br><span class="line">    height 30px</span><br><span class="line">    position relative</span><br><span class="line">    cursor pointer</span><br><span class="line">    z-index 1</span><br><span class="line">    &amp;:hover</span><br><span class="line">      z-index 0</span><br><span class="line">      &amp;:after, &amp;:before</span><br><span class="line">        z-index -1</span><br><span class="line">        position absolute</span><br><span class="line">        content &apos;&apos;</span><br><span class="line">        background rgba(255, 248,220, .5)</span><br><span class="line">      &amp;:after</span><br><span class="line">        top 0px</span><br><span class="line">        left -1000px</span><br><span class="line">        height 100%</span><br><span class="line">        width 2000px</span><br><span class="line">      &amp;:before</span><br><span class="line">        left 0px</span><br><span class="line">        top -1000px</span><br><span class="line">        width 100%</span><br><span class="line">        height 2000px</span><br></pre></td></tr></table></figure>
+<p>其实这样的方式不太好，因为table或容器元素的overflow要设为hidden, 如果还需要在table上做其他特殊样式的话，也许会有冲突，比如添加tooltip(有些库默认添加在当前元素后，可通过属性配置，设置container为body元素即可解决冲突)</p>
+<h2 id="气泡对话框"><a href="#气泡对话框" class="headerlink" title="气泡对话框"></a>气泡对话框</h2><p>关于气泡框，看完以下两篇文章，基本就不成问题了。<br><a href="http://www.smalljacky.com/web-design/css/css-border-create-triangle/" target="_blank" rel="external">css制作各式各样的三角形</a><br><a href="http://nicolasgallagher.com/pure-css-speech-bubbles/demo/" target="_blank" rel="external">css实现气泡对话框Demo</a></p>
+<p>这里也写了个简单的例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// html部分-pug</span><br><span class="line">.bubble.yellow 你喜欢我吗</span><br><span class="line"></span><br><span class="line">// css部分-stylus</span><br><span class="line">.bubble</span><br><span class="line">    height 20px</span><br><span class="line">    border-radius 5px</span><br><span class="line">    padding 10px</span><br><span class="line">    position relative</span><br><span class="line">    &amp;.yellow</span><br><span class="line">        background #FFF68F</span><br><span class="line">        &amp;:after</span><br><span class="line">            border-color #FFF68F transparent</span><br><span class="line">            right 10%</span><br><span class="line">            border-width 20px 20px 0px 0px</span><br><span class="line">    &amp;:after</span><br><span class="line">     position absolute</span><br><span class="line">     content &apos;&apos;</span><br><span class="line">     bottom -20px</span><br><span class="line">     border-style solid</span><br></pre></td></tr></table></figure></p>
+<h2 id="时间轴效果"><a href="#时间轴效果" class="headerlink" title="时间轴效果"></a>时间轴效果</h2><p>其实做时间轴不一定要用到before和after, 如果标记时间轴点的元素比较复杂的话，因为content不原生支持html的格式，所以还是不太够的，根本上还是归功于absolute布局<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// html部分-pug</span><br><span class="line">.timeline-item</span><br><span class="line">  .content-box</span><br><span class="line"></span><br><span class="line">// css部分-stylus</span><br><span class="line">$themeColor = #FFDAB9</span><br><span class="line">.timeline-item</span><br><span class="line">    position relative</span><br><span class="line">    padding 0px 20px 0px</span><br><span class="line">    border-left 2px solid $themeColor</span><br><span class="line">    &amp;::before</span><br><span class="line">        position absolute</span><br><span class="line">        content &apos;&apos;</span><br><span class="line">        border-radius 50%</span><br><span class="line">        background $themeColor</span><br><span class="line">        width 10px</span><br><span class="line">        height 10px</span><br><span class="line">        left -6px</span><br></pre></td></tr></table></figure></p>
+<h2 id="总而言之"><a href="#总而言之" class="headerlink" title="总而言之"></a>总而言之</h2><p>before, after是神器，有待好好发掘！<br>附上<a href="https://codepen.io/xjinjin/pen/JEJLJQ" target="_blank" rel="external">CodePen地址</a>，例子都整合在一起了。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/01/25/css-before-after/">css伪元素before,after实现的一些效果</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">xjinjin</a></p>
+        <p><span>发布时间:</span>2017-01-25, 19:54:35</p>
+        <p><span>最后更新:</span>2017-01-25, 22:33:21</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/25/css-before-after/" title="css伪元素before,after实现的一些效果">xjinjin.net/2017/01/25/css-before-after/</a>
+            <span class="copy-path" data-clipboard-text="原文: xjinjin.net/2017/01/25/css-before-after/　　作者: xjinjin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/12/10/angular-input-validate/">
+                    angular 自定义form表单验证控件
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#不规则背景图-图片"><span class="toc-number">1.</span> <span class="toc-text">不规则背景图/图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不完整边框"><span class="toc-number">2.</span> <span class="toc-text">不完整边框</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表格hover行列高亮"><span class="toc-number">3.</span> <span class="toc-text">表格hover行列高亮</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#气泡对话框"><span class="toc-number">4.</span> <span class="toc-text">气泡对话框</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#时间轴效果"><span class="toc-number">5.</span> <span class="toc-text">时间轴效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总而言之"><span class="toc-number">6.</span> <span class="toc-text">总而言之</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"css伪元素before,after实现的一些效果　| 金金求上进　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/01/25/css-before-after/" data-title="css伪元素before,after实现的一些效果" data-url="xjinjin.net/2017/01/25/css-before-after/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xjinjin"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/12/10/angular-input-validate/" title="下一篇: angular 自定义form表单验证控件">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/25/css-before-after/">css伪元素before,after实现的一些效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/angular-input-validate/">angular 自定义form表单验证控件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/25/bl-game-moved-3/">BL游戏盘点感动瞬间（三）—— 咎狗之血，sweet pool</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/25/bl-game-moved-2/">BL游戏盘点感动瞬间（二）—— steal，lucky dog</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/20/webpack-multiple-page-static/">webpack构建静态多页应用项目框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/14/bl-game-moved/">BL游戏盘点感动瞬间（一）——鬼畜眼镜，lamento</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/unit-conversion/">js数字format转换代码，带千，万，百万单位</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/15/transparent-editable-select/">透明背景,可编辑下拉框</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/06/transparent-nav/">web app透明渐变的导航栏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/03/timeline-of-android/">自定义android时间轴控件</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 xjinjin
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.0">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 10;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
