@@ -192,7 +192,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BL/">BL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snippet/">snippet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/乙女/">乙女</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小控件/">小控件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/腐女世界/">腐女世界</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BL/">BL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snippet/">snippet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/乙女/">乙女</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小控件/">小控件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/腐女世界/">腐女世界</a></li></ul>
                     </div>
                 </section>
                 
@@ -268,6 +268,83 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-react-index-key" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/12/19/react-index-key/" class="article-date">
+      <time datetime="2017-12-18T16:10:38.000Z" itemprop="datePublished">2017-12-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/19/react-index-key/">关于react中使用index作key值render list的一点注意</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>首先，必须明确的是用index做key值是下下策，官方也不推荐，优先还是数据自己的id值。如果非要用index，且不满足安全情况时，建议在第一次获取数据的地方，为数据生成key值（比如api获取数据后）</p>
+<h3 id="怎样算满足安全情况？"><a href="#怎样算满足安全情况？" class="headerlink" title="怎样算满足安全情况？"></a>怎样算满足安全情况？</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;List.map((item, index) =&gt; <span class="tag">&lt;<span class="name">Item</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span> <span class="attr">data</span>=<span class="string">&#123;item&#125;</span> /&gt;</span>)&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>List数组顺序不会发生改变(每条数据的index值恒定)，比如不存在排序，过滤，插入，删除等可能导致数组顺序发生变化的行为</p>
+</li>
+<li><p>Item中所有组件的状态均来自props，即不存在自己的state或者不受控制的状态，比如没有绑定value的<code>&lt;input /&gt;</code></p>
+</li>
+</ol>
+<p>满足两条中任意一条，即可使用index作为key值而不会出现问题，否则只能为数组生成一下key值了（uuid或者timestamp + index等），即便不设,</p>
+<p><Excerpt in index | 首页摘要></p>
+<ul>
+<li>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/坑/">坑</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2017/12/19/react-index-key/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-game-jiyuanbianhua" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -892,76 +969,6 @@
       
         <p class="article-more-link">
           <a href="/2016/08/14/bl-game-moved/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-unit-conversion" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/12/unit-conversion/" class="article-date">
-      <time datetime="2016-08-12T13:30:37.000Z" itemprop="datePublished">2016-08-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/12/unit-conversion/">js数字format转换代码，带千，万，百万单位</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>所谓带单位，就是实现1000-&gt;1千，259999-&gt;25万，10020002-&gt;1千万类似这样的处理</p>
-<p>在介绍format的snippet之前，先来介绍一个很好用的库（虽然并没有什么关系）, <a href="http://numeraljs.com/">numeral.js</a>, 有很多format的功能，譬如百分比转换，货币转换，单位换算，还能unformat, 配置不同的语言转换标准，真的十分强大。</p>
-<p><Excerpt in index | 首页摘要></p>
-<ul>
-<li>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/编程/">编程</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/snippet/">snippet</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2016/08/12/unit-conversion/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
