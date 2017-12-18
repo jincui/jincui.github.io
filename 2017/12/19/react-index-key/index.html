@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="金金求上进">
 <meta property="og:description" content="首先，必须明确的是用index做key值是下下策，官方也不推荐，优先还是数据自己的id值。如果非要用index，且不满足安全情况时，建议在第一次获取数据的地方，为数据生成key值（比如api获取数据后）
 怎样算满足安全情况？123&amp;lt;div&amp;gt;&amp;#123;List.map((item, index) =&amp;gt; &amp;lt;Item key=&amp;#123;index&amp;#125; data=&amp;#1">
-<meta property="og:updated_time" content="2017-12-18T16:30:22.000Z">
+<meta property="og:updated_time" content="2017-12-18T16:31:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于react中使用index作key值render list的一点注意">
 <meta name="twitter:description" content="首先，必须明确的是用index做key值是下下策，官方也不推荐，优先还是数据自己的id值。如果非要用index，且不满足安全情况时，建议在第一次获取数据的地方，为数据生成key值（比如api获取数据后）
@@ -313,7 +313,7 @@
 <ol>
 <li><p>List数组顺序不会发生改变(每条数据的index值恒定)，比如不存在排序，过滤，插入，删除等可能导致数组顺序发生变化的行为</p>
 </li>
-<li><p>Item中所有组件的状态均来自props，即不存在自己的state或者不受控制的状态，比如没有绑定value的<code>&lt;input /&gt;</code><br>（注意，所谓的均来自props, 还不够准确，Item上所有的props值应当与index无关）</p>
+<li><p>Item中所有组件的状态均来自props，即不存在自己的state或者不受控制的状态，比如没有绑定value的<code>&lt;input /&gt;</code><br><em>（注意，所谓的均来自props, 还不够准确，Item上所有的props值应当与index无关）*</em></p>
 </li>
 </ol>
 <p>满足两条中任意一条，即可使用index作为key值而不会出现问题。否则只能为数组生成一下key值了（uuid或者timestamp + index等），即便不设,</p>
@@ -355,7 +355,7 @@
         <p><span>本文标题:</span><a href="/2017/12/19/react-index-key/">关于react中使用index作key值render list的一点注意</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">xjinjin</a></p>
         <p><span>发布时间:</span>2017-12-19, 00:10:38</p>
-        <p><span>最后更新:</span>2017-12-19, 00:30:22</p>
+        <p><span>最后更新:</span>2017-12-19, 00:31:37</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/12/19/react-index-key/" title="关于react中使用index作key值render list的一点注意">xjinjin.net/2017/12/19/react-index-key/</a>
             <span class="copy-path" data-clipboard-text="原文: xjinjin.net/2017/12/19/react-index-key/　　作者: xjinjin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

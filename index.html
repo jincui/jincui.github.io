@@ -301,7 +301,7 @@
 <ol>
 <li><p>List数组顺序不会发生改变(每条数据的index值恒定)，比如不存在排序，过滤，插入，删除等可能导致数组顺序发生变化的行为</p>
 </li>
-<li><p>Item中所有组件的状态均来自props，即不存在自己的state或者不受控制的状态，比如没有绑定value的<code>&lt;input /&gt;</code><br>（注意，所谓的均来自props, 还不够准确，Item上所有的props值应当与index无关）</p>
+<li><p>Item中所有组件的状态均来自props，即不存在自己的state或者不受控制的状态，比如没有绑定value的<code>&lt;input /&gt;</code><br><em>（注意，所谓的均来自props, 还不够准确，Item上所有的props值应当与index无关）*</em></p>
 </li>
 </ol>
 <p>满足两条中任意一条，即可使用index作为key值而不会出现问题。否则只能为数组生成一下key值了（uuid或者timestamp + index等），即便不设,</p>
