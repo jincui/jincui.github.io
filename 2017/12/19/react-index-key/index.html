@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="金金求上进">
 <meta property="og:description" content="首先，必须明确的是用index做key值是下下策，官方也不推荐，优先还是数据自己的id值。如果非要用index，且不满足安全情况时，建议在第一次获取数据的地方，为数据生成key值（比如api获取数据后）
 怎样算满足安全情况？123&amp;lt;div&amp;gt;&amp;#123;List.map((item, index) =&amp;gt; &amp;lt;Item key=&amp;#123;index&amp;#125; data=&amp;#1">
-<meta property="og:updated_time" content="2017-12-18T16:17:18.000Z">
+<meta property="og:updated_time" content="2017-12-18T16:30:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于react中使用index作key值render list的一点注意">
 <meta name="twitter:description" content="首先，必须明确的是用index做key值是下下策，官方也不推荐，优先还是数据自己的id值。如果非要用index，且不满足安全情况时，建议在第一次获取数据的地方，为数据生成key值（比如api获取数据后）
@@ -313,10 +313,10 @@
 <ol>
 <li><p>List数组顺序不会发生改变(每条数据的index值恒定)，比如不存在排序，过滤，插入，删除等可能导致数组顺序发生变化的行为</p>
 </li>
-<li><p>Item中所有组件的状态均来自props，即不存在自己的state或者不受控制的状态，比如没有绑定value的<code>&lt;input /&gt;</code></p>
+<li><p>Item中所有组件的状态均来自props，即不存在自己的state或者不受控制的状态，比如没有绑定value的<code>&lt;input /&gt;</code><br>（注意，所谓的均来自props, 还不够准确，Item上所有的props值应当与index无关）</p>
 </li>
 </ol>
-<p>满足两条中任意一条，即可使用index作为key值而不会出现问题，否则只能为数组生成一下key值了（uuid或者timestamp + index等），即便不设,</p>
+<p>满足两条中任意一条，即可使用index作为key值而不会出现问题。否则只能为数组生成一下key值了（uuid或者timestamp + index等），即便不设,</p>
 <p><excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
 <ul>
 <li><a id="more"></a>
@@ -335,7 +335,7 @@
 <p>假设数组中有A，B两条记录，render出ItemA, ItemB</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// [A, B].map =&gt;</span></span><br><span class="line">&lt;Item key=&#123;<span class="number">0</span>&#125; data=&#123;A&#125; /&gt;（ItemA号，key<span class="number">-0</span>）</span><br><span class="line">&lt;Item key=&#123;<span class="number">1</span>&#125; data=&#123;B&#125; /&gt;（ItemB号, key<span class="number">-1</span>）</span><br></pre></td></tr></table></figure>
 <p>此时假如数组顺序变了，我们得到的新的结构是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// [B, A].map =&gt;</span></span><br><span class="line">&lt;Item key=&#123;<span class="number">0</span>&#125; data=&#123;B&#125; /&gt;（ItemA号, key<span class="number">-0</span>）</span><br><span class="line">&lt;Item key=&#123;<span class="number">1</span>&#125; data=&#123;A&#125; /&gt;（ItemB号, key<span class="number">-1</span>）</span><br></pre></td></tr></table></figure></p>
-<p>我们期望的是ItemA和ItemB的顺序和数组一致，但是由于index做key值，对react来说ItemA和ItemB位置没有发生move，只不过ItemA和ItemB的props(data)变了。所以如果Item中所有状态均来自props，那么不会受到影响。但如果Item(包括其子组件)有自己维护的state或者不受控制的状态，则会出现问题。</p>
+<p>我们期望的是ItemA和ItemB的顺序和数组一致，但是由于index做key值，对react来说ItemA和ItemB位置没有发生move，只不过ItemA和ItemB的props(data)变了。所以如果Item中所有状态均来自props/data，那么不会受到影响。但如果Item(包括其子组件)有自己维护的state或者不受控制的状态，则会出现问题。</p>
 <p>比如</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// [B, A] =&gt;</span></span><br><span class="line">&lt;Item key=&#123;<span class="number">0</span>&#125; data=&#123;A&#125;&gt;</span><br><span class="line"> <span class="xml"><span class="tag">&lt;<span class="name">Switch</span> /&gt;</span> // state =&gt; &#123; checked: true &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">Item</span>&gt;</span></span></span><br><span class="line">&lt;Item key=&#123;<span class="number">1</span>&#125; data=&#123;B&#125;&gt;</span><br><span class="line"> <span class="xml"><span class="tag">&lt;<span class="name">Switch</span> /&gt;</span>// state =&gt; &#123; checked: false &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">Item</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <p>顺序转变后<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// [B, A] =&gt;</span></span><br><span class="line">&lt;Item key=&#123;<span class="number">0</span>&#125; data=&#123;B&#125;&gt;</span><br><span class="line"> <span class="xml"><span class="tag">&lt;<span class="name">Switch</span> /&gt;</span> // state =&gt; &#123; checked: true &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">Item</span>&gt;</span></span>（ItemA号）</span><br><span class="line">&lt;Item key=&#123;<span class="number">1</span>&#125; data=&#123;A&#125;&gt;</span><br><span class="line"> <span class="xml"><span class="tag">&lt;<span class="name">Switch</span> /&gt;</span> // state =&gt; &#123; checked: false &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">Item</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
@@ -355,7 +355,7 @@
         <p><span>本文标题:</span><a href="/2017/12/19/react-index-key/">关于react中使用index作key值render list的一点注意</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">xjinjin</a></p>
         <p><span>发布时间:</span>2017-12-19, 00:10:38</p>
-        <p><span>最后更新:</span>2017-12-19, 00:17:18</p>
+        <p><span>最后更新:</span>2017-12-19, 00:30:22</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/12/19/react-index-key/" title="关于react中使用index作key值render list的一点注意">xjinjin.net/2017/12/19/react-index-key/</a>
             <span class="copy-path" data-clipboard-text="原文: xjinjin.net/2017/12/19/react-index-key/　　作者: xjinjin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
