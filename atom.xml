@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="xjinjin.net/"/>
-  <updated>2017-12-18T16:31:37.000Z</updated>
+  <updated>2017-12-18T16:32:36.000Z</updated>
   <id>xjinjin.net/</id>
   
   <author>
@@ -20,14 +20,14 @@
     <link href="xjinjin.net/2017/12/19/react-index-key/"/>
     <id>xjinjin.net/2017/12/19/react-index-key/</id>
     <published>2017-12-18T16:10:38.000Z</published>
-    <updated>2017-12-18T16:31:37.000Z</updated>
+    <updated>2017-12-18T16:32:36.000Z</updated>
     
     <content type="html">&lt;p&gt;首先，必须明确的是用index做key值是下下策，官方也不推荐，优先还是数据自己的id值。如果非要用index，且不满足安全情况时，建议在第一次获取数据的地方，为数据生成key值（比如api获取数据后）&lt;/p&gt;
 &lt;h3 id=&quot;怎样算满足安全情况？&quot;&gt;&lt;a href=&quot;#怎样算满足安全情况？&quot; class=&quot;headerlink&quot; title=&quot;怎样算满足安全情况？&quot;&gt;&lt;/a&gt;怎样算满足安全情况？&lt;/h3&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;List.map((item, index) =&amp;gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;Item&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;key&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;#123;index&amp;#125;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;data&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;#123;item&amp;#125;&lt;/span&gt; /&amp;gt;&lt;/span&gt;)&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;List数组顺序不会发生改变(每条数据的index值恒定)，比如不存在排序，过滤，插入，删除等可能导致数组顺序发生变化的行为&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Item中所有组件的状态均来自props，即不存在自己的state或者不受控制的状态，比如没有绑定value的&lt;code&gt;&amp;lt;input /&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;em&gt;（注意，所谓的均来自props, 还不够准确，Item上所有的props值应当与index无关）*&lt;/em&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Item中所有组件的状态均来自props，即不存在自己的state或者不受控制的状态，比如没有绑定value的&lt;code&gt;&amp;lt;input /&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;strong&gt;（注意，所谓的均来自props, 还不够准确，Item上所有的props值应当与index无关）&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;满足两条中任意一条，即可使用index作为key值而不会出现问题。否则只能为数组生成一下key值了（uuid或者timestamp + index等），即便不设,&lt;/p&gt;
@@ -67,7 +67,7 @@
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;List数组顺序不会发生改变(每条数据的index值恒定)，比如不存在排序，过滤，插入，删除等可能导致数组顺序发生变化的行为&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Item中所有组件的状态均来自props，即不存在自己的state或者不受控制的状态，比如没有绑定value的&lt;code&gt;&amp;lt;input /&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;em&gt;（注意，所谓的均来自props, 还不够准确，Item上所有的props值应当与index无关）*&lt;/em&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Item中所有组件的状态均来自props，即不存在自己的state或者不受控制的状态，比如没有绑定value的&lt;code&gt;&amp;lt;input /&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;strong&gt;（注意，所谓的均来自props, 还不够准确，Item上所有的props值应当与index无关）&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;满足两条中任意一条，即可使用index作为key值而不会出现问题。否则只能为数组生成一下key值了（uuid或者timestamp + index等），即便不设,&lt;/p&gt;
