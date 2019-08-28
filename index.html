@@ -31,7 +31,7 @@
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
 
-    <link rel="alternative" href="/atom.xml" title="金金求上进" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="金金求上进" type="application/atom+xml">
 
 
 
@@ -74,10 +74,9 @@
         isArchive: false,
         isTag: false,
         isCategory: false,
-        open_in_new: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: true
+        search: undefined
     }
 </script>
 
@@ -111,13 +110,6 @@
         <p class="header-subtitle">一只修炼中的程序媛，一位资深腐女</p>
         
 
-        
-            <form id="search-form">
-            <input type="text" id="local-search-input" name="q" results="0" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
-            <i class="fa fa-times" onclick="resetSearch()"></i>
-            </form>
-            <div id="local-search-result"></div>
-            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -175,15 +167,17 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:1191138096@qq.com" title="Email"></a>
+                                <a class="fa Email" href="mailto:jincui12@163.com" title="Email"></a>
                             
-                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/u/2421053563/home?wvr=5" title="新浪微博"></a>
+                                <a class="fa 新浪微博" href="http://weibo.com/u/2421053563/home?wvr=5" title="新浪微博"></a>
                             
-                                <a class="fa GitHub" target="_blank" href="https://github.com/jincui" title="GitHub"></a>
+                                <a class="fa GitHub" href="https://github.com/jincui" title="GitHub"></a>
                             
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
                             
-                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/u/272822ca68f0" title="简书"></a>
+                                <a class="fa bilibili" href="https://space.bilibili.com/24384404" title="bilibili"></a>
+                            
+                                <a class="fa CodePen" href="https://codepen.io/xjinjin" title="CodePen"></a>
                             
                         </ul>
                     </nav>
@@ -192,7 +186,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BL/">BL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snippet/">snippet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/乙女/">乙女</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小控件/">小控件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/腐女世界/">腐女世界</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snippet/">snippet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/乙女/">乙女</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小控件/">小控件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/耽美/">耽美</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/腐女世界/">腐女世界</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读后感/">读后感</a></li></ul>
                     </div>
                 </section>
                 
@@ -201,11 +195,11 @@
                 <section class="switch-part switch-part3">
                     <div id="js-friends">
                     
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
                     
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
                     
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
                     
                     </div>
                 </section>
@@ -251,7 +245,7 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:1191138096@qq.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="mailto:jincui12@163.com" title="Email"></a>
                             
                                 <a class="fa 新浪微博" target="_blank" href="http://weibo.com/u/2421053563/home?wvr=5" title="新浪微博"></a>
                             
@@ -259,7 +253,9 @@
                             
                                 <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
                             
-                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/u/272822ca68f0" title="简书"></a>
+                                <a class="fa bilibili" target="_blank" href="https://space.bilibili.com/24384404" title="bilibili"></a>
+                            
+                                <a class="fa CodePen" target="_blank" href="https://codepen.io/xjinjin" title="CodePen"></a>
                             
                         </ul>
             </nav>
@@ -269,12 +265,229 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-game-fulue" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/08/29/game-fulue/" class="article-date">
+      <time datetime="2019-08-28T16:34:13.000Z" itemprop="datePublished">2019-08-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/29/game-fulue/">ふるえ、ゆらゆらと摇曳之月上下弦之章食完感想</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>如果非让我评价的话，这就是一个披着阴阳师玄幻风外皮的宫廷狗血言情剧。两部走下来，我的内心毫无波澜，甚至有点想笑，套路啊，都是套路<br><img src="http://ww1.sinaimg.cn/large/904e587bly1g6fdqx67qnj20yg0j84qp.jpg" alt="Q版下弦之章"></p>
+<p><Excerpt in index | 首页摘要></p>
+<ul>
+<li>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/游戏/">游戏</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/乙女/">乙女</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2019/08/29/game-fulue/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-bl-novel-2018" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/08/29/bl-novel-2018/" class="article-date">
+      <time datetime="2019-08-28T16:18:09.000Z" itemprop="datePublished">2019-08-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/29/bl-novel-2018/">那些年我读过的耽美小说（2018）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>有点长，62本，部分有剧透。记录了一些读后感，比较随性跳跃，适合读过的盆友们再来一起回味一下。</p>
+<p><Excerpt in index | 首页摘要></p>
+<ul>
+<li>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/小说/">小说</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/耽美/">耽美</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/腐女世界/">腐女世界</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读后感/">读后感</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2019/08/29/bl-novel-2018/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-bl-game-moved-4" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/08/28/bl-game-moved-4/" class="article-date">
+      <time datetime="2019-08-28T15:42:26.000Z" itemprop="datePublished">2019-08-28</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/28/bl-game-moved-4/">耽美游戏盘点感动瞬间（四）——  Galtia,omerta(沉默的法则)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>啊，久违久违，每次玩完游戏都想写食完感想，然而太懒，而且剧情线真的是走的时候一脸花痴，走完基本不记得。</p>
+<p>最近刚玩完Galtia被稍稍刺激了一把，（虽然是15年的游戏）赶紧来记录一下。至于沉默的法则，是很久以前玩的了，FD也是一口气走完，对其中几个结局还是印象深刻呀。篇幅有限（<del>我懒</del>），就挑我的两位心头好吧。</p>
+<p>这次引用比较多，啊，我拙劣的翻译，还是去看原文比较好呀！</p>
+<p><Excerpt in index | 首页摘要></p>
+<ul>
+<li>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/游戏/">游戏</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/耽美/">耽美</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/腐女世界/">腐女世界</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2019/08/28/bl-game-moved-4/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-react-index-key" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2017/12/19/react-index-key/" class="article-date">
       <time datetime="2017-12-18T16:10:38.000Z" itemprop="datePublished">2017-12-19</time>
 </a>
+
+
     </div>
   
   <div class="article-inner">
@@ -352,6 +565,8 @@
       <a href="/2017/08/31/game-jiyuanbianhua/" class="article-date">
       <time datetime="2017-08-31T13:04:04.000Z" itemprop="datePublished">2017-08-31</time>
 </a>
+
+
     </div>
   
   <div class="article-inner">
@@ -424,6 +639,8 @@
       <a href="/2017/04/08/bl-game-Si-Nis-Kanto/" class="article-date">
       <time datetime="2017-04-08T05:17:25.000Z" itemprop="datePublished">2017-04-08</time>
 </a>
+
+
     </div>
   
   <div class="article-inner">
@@ -464,7 +681,7 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BL/">BL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/腐女世界/">腐女世界</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/耽美/">耽美</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/腐女世界/">腐女世界</a></li></ul>
     </div>
 
       
@@ -494,6 +711,8 @@
       <a href="/2017/03/27/game-queen-of-bee/" class="article-date">
       <time datetime="2017-03-27T07:45:23.000Z" itemprop="datePublished">2017-03-27</time>
 </a>
+
+
     </div>
   
   <div class="article-inner">
@@ -564,6 +783,8 @@
       <a href="/2017/01/25/css-before-after/" class="article-date">
       <time datetime="2017-01-25T11:54:35.000Z" itemprop="datePublished">2017-01-25</time>
 </a>
+
+
     </div>
   
   <div class="article-inner">
@@ -633,6 +854,8 @@
       <a href="/2016/12/10/angular-input-validate/" class="article-date">
       <time datetime="2016-12-10T10:55:02.000Z" itemprop="datePublished">2016-12-10</time>
 </a>
+
+
     </div>
   
   <div class="article-inner">
@@ -708,6 +931,8 @@
       <a href="/2016/10/25/bl-game-moved-3/" class="article-date">
       <time datetime="2016-10-25T09:19:24.000Z" itemprop="datePublished">2016-10-25</time>
 </a>
+
+
     </div>
   
   <div class="article-inner">
@@ -719,7 +944,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/25/bl-game-moved-3/">BL游戏盘点感动瞬间（三）—— 咎狗之血，sweet pool</a>
+      <a class="article-title" href="/2016/10/25/bl-game-moved-3/">耽美游戏盘点感动瞬间（三）—— 咎狗之血，sweet pool</a>
     </h1>
   
 
@@ -749,226 +974,12 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BL/">BL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/腐女世界/">腐女世界</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/耽美/">耽美</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/腐女世界/">腐女世界</a></li></ul>
     </div>
 
       
         <p class="article-more-link">
           <a href="/2016/10/25/bl-game-moved-3/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-bl-game-moved-2" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/25/bl-game-moved-2/" class="article-date">
-      <time datetime="2016-09-25T09:19:24.000Z" itemprop="datePublished">2016-09-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/25/bl-game-moved-2/">BL游戏盘点感动瞬间（二）—— steal，lucky dog</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>啊，因为种种原因，真的好久没有碰游戏了呢。之前一直卡在神无之鸟那儿， 果然这种偏日常系列的我还是不太感冒的。</p>
-<p>好的，废话少说，今天来盘点一下steal和lucky dog里的一些情节。这两个游戏我还是比较心水的，尤其是后者，简直大爱，每个角色的个人线部分编剧都非常走心。</p>
-<p>因为，玩的时间很久了，所以剧情描述可能有出入，欢迎补充和指正哟。</p>
-<h2 id="Steal"><a href="#Steal" class="headerlink" title="Steal"></a>Steal</h2><p>steal里面可攻略的角色真是多啊，各式各样（色色色）！</p>
-<p>我对于银发是没有抵抗力的，所以一开始就对里面的桐生前辈很心水，结果这只居然是最鬼畜的。各个人物的线路总的来说一般，感点不多（我感点高？？）。不过我们可怜的兴前辈向明日叶诉说家里的长辈都说他不适合创作，只会临摹的人不可能啥啥啥的时候，明明很努力却不受认可，那副快哭出来的不知所措的样子我还是记忆尤深啊，心疼一把。</p>
-<p><Excerpt in index | 首页摘要></p>
-<ul>
-<li>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/游戏/">游戏</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BL/">BL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/腐女世界/">腐女世界</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2016/09/25/bl-game-moved-2/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-webpack-multiple-page-static" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/20/webpack-multiple-page-static/" class="article-date">
-      <time datetime="2016-08-19T17:02:10.000Z" itemprop="datePublished">2016-08-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/20/webpack-multiple-page-static/">webpack构建静态多页应用项目框架</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>最近因为项目需求，需要使用webpack构建一个静态的多页应用，譬如主页网站之类。本文主要来解析一下按功能模块划分的项目结构，再重点分析webpack的配置文件。<a href="https://github.com/jincui/webpack-multiplepage">项目源码github地址</a></p>
-<p>view engine使用jade, css 预编译使用stylus，这个影响不大。<br>首先，我们来看一下项目的基本结构</p>
-<p><Excerpt in index | 首页摘要></p>
-<ul>
-<li>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/编程/">编程</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2016/08/20/webpack-multiple-page-static/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-bl-game-moved" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/14/bl-game-moved/" class="article-date">
-      <time datetime="2016-08-14T14:02:24.000Z" itemprop="datePublished">2016-08-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/14/bl-game-moved/">BL游戏盘点感动瞬间（一）——鬼畜眼镜，lamento</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>作为一个腐女，玩了很久的BL文字冒险游戏，有画风赞的，有剧情赞的，有BGM赞的。每每那些精彩直戳泪点的瞬间，让人爱到心碎。</p>
-<p>所以特地开个系列来诉说那一段段感人肺腑的故事，欢迎同感者来交流。</p>
-<h2 id="鬼畜眼镜"><a href="#鬼畜眼镜" class="headerlink" title="鬼畜眼镜"></a>鬼畜眼镜</h2><p><img src="http://ww2.sinaimg.cn/large/904e587bjw1f5mg3sa7nhj20ma0gm43x.jpg" alt="鬼畜眼镜图"></p>
-<p><Excerpt in index | 首页摘要></p>
-<ul>
-<li>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/游戏/">游戏</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BL/">BL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/腐女世界/">腐女世界</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2016/08/14/bl-game-moved/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -1001,25 +1012,23 @@
                 2016-2019 xjinjin
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.0">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >本站到访数: 
-                            <span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
                 
-                    <span>, </span>
+                    <span>| </span>
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -1050,11 +1059,34 @@
 
 
 
+
 <div class="scroll" id="scroll">
     <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
     <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
   </div>

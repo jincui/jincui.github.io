@@ -32,7 +32,7 @@
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
 
-    <link rel="alternative" href="/atom.xml" title="金金求上进" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="金金求上进" type="application/atom+xml">
 
 
 
@@ -73,10 +73,9 @@
         isArchive: false,
         isTag: false,
         isCategory: false,
-        open_in_new: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: true
+        search: undefined
     }
 </script>
 
@@ -110,13 +109,6 @@
         <p class="header-subtitle">一只修炼中的程序媛，一位资深腐女</p>
         
 
-        
-            <form id="search-form">
-            <input type="text" id="local-search-input" name="q" results="0" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
-            <i class="fa fa-times" onclick="resetSearch()"></i>
-            </form>
-            <div id="local-search-result"></div>
-            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -174,15 +166,17 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:1191138096@qq.com" title="Email"></a>
+                                <a class="fa Email" href="mailto:jincui12@163.com" title="Email"></a>
                             
-                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/u/2421053563/home?wvr=5" title="新浪微博"></a>
+                                <a class="fa 新浪微博" href="http://weibo.com/u/2421053563/home?wvr=5" title="新浪微博"></a>
                             
-                                <a class="fa GitHub" target="_blank" href="https://github.com/jincui" title="GitHub"></a>
+                                <a class="fa GitHub" href="https://github.com/jincui" title="GitHub"></a>
                             
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
                             
-                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/u/272822ca68f0" title="简书"></a>
+                                <a class="fa bilibili" href="https://space.bilibili.com/24384404" title="bilibili"></a>
+                            
+                                <a class="fa CodePen" href="https://codepen.io/xjinjin" title="CodePen"></a>
                             
                         </ul>
                     </nav>
@@ -191,7 +185,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BL/">BL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snippet/">snippet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/乙女/">乙女</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小控件/">小控件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/腐女世界/">腐女世界</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snippet/">snippet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/乙女/">乙女</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/坑/">坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小控件/">小控件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/耽美/">耽美</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/腐女世界/">腐女世界</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读后感/">读后感</a></li></ul>
                     </div>
                 </section>
                 
@@ -200,11 +194,11 @@
                 <section class="switch-part switch-part3">
                     <div id="js-friends">
                     
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
                     
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
                     
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
                     
                     </div>
                 </section>
@@ -250,7 +244,7 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:1191138096@qq.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="mailto:jincui12@163.com" title="Email"></a>
                             
                                 <a class="fa 新浪微博" target="_blank" href="http://weibo.com/u/2421053563/home?wvr=5" title="新浪微博"></a>
                             
@@ -258,7 +252,9 @@
                             
                                 <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
                             
-                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/u/272822ca68f0" title="简书"></a>
+                                <a class="fa bilibili" target="_blank" href="https://space.bilibili.com/24384404" title="bilibili"></a>
+                            
+                                <a class="fa CodePen" target="_blank" href="https://codepen.io/xjinjin" title="CodePen"></a>
                             
                         </ul>
             </nav>
@@ -272,6 +268,8 @@
       <a href="/2017/12/19/react-index-key/" class="article-date">
       <time datetime="2017-12-18T16:10:38.000Z" itemprop="datePublished">2017-12-19</time>
 </a>
+
+
     </div>
   
   <div class="article-inner">
@@ -370,6 +368,12 @@
 
     <nav id="article-nav">
         
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/08/28/bl-game-moved-4/">
+                    耽美游戏盘点感动瞬间（四）——  Galtia,omerta(沉默的法则)
+                </a>
+            </div>
+        
         
             <div id="article-nav-older" class="article-nav-title">
                 <a href="/2017/08/31/game-jiyuanbianhua/">
@@ -383,47 +387,27 @@
 </article>
 
     <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#怎样算满足安全情况？"><span class="toc-number">1.</span> <span class="toc-text">怎样算满足安全情况？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为啥会有问题"><span class="toc-number">2.</span> <span class="toc-text">为啥会有问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
-</div>
-<style>
-    .left-col .switch-btn {
-        display: none;
-    }
-    .left-col .switch-area {
-        display: none;
-    }
-</style>
-
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-            $(".switch-btn, .switch-area").fadeOut(300);
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#怎样算满足安全情况？"><span class="toc-number">1.</span> <span class="toc-text">怎样算满足安全情况？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为啥会有问题"><span class="toc-number">2.</span> <span class="toc-text">为啥会有问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
         }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-            $(".switch-btn, .switch-area").fadeIn(500);
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
         }
-    })
+    </style>
 
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-        $(".switch-btn, .switch-area").show();
-    }
-</script>
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
-
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
 
@@ -455,19 +439,15 @@
 
 
     
-        <section class="youyan" id="comments">
-  <div id="uyan_frame"></div>
-  <script src="http://v2.uyan.cc/code/uyan.js?uid=2130369"></script>
-</section>
-
-    
 
 
 
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2019/08/28/bl-game-moved-4/" title="上一篇: 耽美游戏盘点感动瞬间（四）——  Galtia,omerta(沉默的法则)">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -479,7 +459,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/12/19/react-index-key/">关于react中使用index作key值render list的一点注意</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/31/game-jiyuanbianhua/">吉原彼岸花食完感想+多图剧透</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/bl-game-Si-Nis-Kanto/">Si-Nis-Kanto至上之空食完感想</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/27/game-queen-of-bee/">女王蜂王房玛瑙篇，辉夜篇食完感想（超级剧透，多图预警）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/25/css-before-after/">css伪元素before,after实现的一些效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/angular-input-validate/">angular 自定义form表单验证控件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/25/bl-game-moved-3/">BL游戏盘点感动瞬间（三）—— 咎狗之血，sweet pool</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/25/bl-game-moved-2/">BL游戏盘点感动瞬间（二）—— steal，lucky dog</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/20/webpack-multiple-page-static/">webpack构建静态多页应用项目框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/14/bl-game-moved/">BL游戏盘点感动瞬间（一）——鬼畜眼镜，lamento</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/unit-conversion/">js数字format转换代码，带千，万，百万单位</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/15/transparent-editable-select/">透明背景,可编辑下拉框</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/06/transparent-nav/">web app透明渐变的导航栏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/03/timeline-of-android/">自定义android时间轴控件</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/08/29/game-fulue/">ふるえ、ゆらゆらと摇曳之月上下弦之章食完感想</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/29/bl-novel-2018/">那些年我读过的耽美小说（2018）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/bl-game-moved-4/">耽美游戏盘点感动瞬间（四）——  Galtia,omerta(沉默的法则)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/19/react-index-key/">关于react中使用index作key值render list的一点注意</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/31/game-jiyuanbianhua/">吉原彼岸花食完感想+多图剧透</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/bl-game-Si-Nis-Kanto/">Si-Nis-Kanto至上之空食完感想</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/27/game-queen-of-bee/">女王蜂王房玛瑙篇，辉夜篇食完感想（超级剧透，多图预警）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/25/css-before-after/">css伪元素before,after实现的一些效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/angular-input-validate/">angular 自定义form表单验证控件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/25/bl-game-moved-3/">耽美游戏盘点感动瞬间（三）—— 咎狗之血，sweet pool</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/25/bl-game-moved-2/">耽美游戏盘点感动瞬间（二）—— steal，lucky dog</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/20/webpack-multiple-page-static/">webpack构建静态多页应用项目框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/14/bl-game-moved/">耽美游戏盘点感动瞬间（一）——鬼畜眼镜，lamento</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/unit-conversion/">js数字format转换代码，带千，万，百万单位</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/15/transparent-editable-select/">透明背景,可编辑下拉框</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/06/transparent-nav/">web app透明渐变的导航栏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/03/timeline-of-android/">自定义android时间轴控件</a></li></ul>
 
 
 
@@ -496,25 +476,23 @@
                 2016-2019 xjinjin
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.0">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >本站到访数: 
-                            <span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
                 
-                    <span>, </span>
+                    <span>| </span>
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -545,11 +523,34 @@
 
 
 
+
 <div class="scroll" id="scroll">
     <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
     <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
   </div>
