@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[关于react中使用index作key值render list的一点注意]]></title>
-      <url>xjinjin.net/2017/12/19/react-index-key/</url>
+      <url>xjinjin.top/2017/12/19/react-index-key/</url>
       <content type="html"><![CDATA[<p>首先，必须明确的是用index做key值是下下策，官方也不推荐，优先还是数据自己的id值。如果非要用index，且不满足安全情况时，建议在第一次获取数据的地方，为数据生成key值（比如api获取数据后）</p>
 <h3 id="怎样算满足安全情况？"><a href="#怎样算满足安全情况？" class="headerlink" title="怎样算满足安全情况？"></a>怎样算满足安全情况？</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;List.map((item, index) =&gt; <span class="tag">&lt;<span class="name">Item</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span> <span class="attr">data</span>=<span class="string">&#123;item&#125;</span> /&gt;</span>)&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ol>
@@ -47,7 +47,7 @@
     
     <entry>
       <title><![CDATA[吉原彼岸花食完感想+多图剧透]]></title>
-      <url>xjinjin.net/2017/08/31/game-jiyuanbianhua/</url>
+      <url>xjinjin.top/2017/08/31/game-jiyuanbianhua/</url>
       <content type="html"><![CDATA[<p>吉原彼岸花，看到这个名字的一瞬间我就已经大概能猜到这是个什么样的故事和会有哪些结局了。</p>
 <p>这个游戏让我想到了花町物语和花阴，背景设定很类似，只是主角是女孩子。有一些攻略角色也有相似之处。比如：彰人和花阴的狮子尾豪，都是火爆粗犷的性格，都有背后的刺青（这样一比还是狮子尾豪的刺青好看，彰人背后的老虎是什么鬼啦）。时雨虽然和东条巽一样是楼主身份，但是性格上（表面性格）比较像圣，对女主还是很照顾和很温柔的。再有花阴里主角伊织有个青梅竹马，彼岸花主角千早凛也有个伊勢屋惣一郎，而且人家还是主要攻略角色之一，戏份可不少呢！</p>
 <p>食用过程还是比较开心的，画风和BGM都非常赞（就是正经的CG不多，基本都是那种时候的CG，花式Play哈哈哈哈），中间也有少女心满满的时刻，有几个结局还挺戳心的，回头想想其实好多都是玛丽苏言情老梗了。然而，攻略角色长得帅啊，这糖和玻璃渣我笑纳了。</p>
@@ -196,7 +196,7 @@
     
     <entry>
       <title><![CDATA[Si-Nis-Kanto至上之空食完感想]]></title>
-      <url>xjinjin.net/2017/04/08/bl-game-Si-Nis-Kanto/</url>
+      <url>xjinjin.top/2017/04/08/bl-game-Si-Nis-Kanto/</url>
       <content type="html"><![CDATA[<p>AVG蔷薇向游戏里黑手党类的游戏真是不少啊, steal啊，沉默法则啊（揪心，一直没玩完)…..Si-Nis-Kanto里的黑手党之争，勾心斗角，尔虞我诈让我看的好过瘾啊，主角小受也还可以，比较别扭傲娇，但是有担当！</p>
 <p>讲真，这个游戏的配乐啊，画风啊都挺喜欢的，但是大量重复感的cg让人感觉不太走心啊！<br>第一条推的线是卡尔洛线，使我大为惊艳，迅速拉高了我对这个游戏的期待值，然后满心欢喜的去推了另外两人雄午，艾西卡，就有点失望了。卡尔洛様，大好きだ！<br><img src="http://ww1.sinaimg.cn/large/904e587bly1fefbi9fumhj20o80hyb29.jpg" alt="卡尔洛"></p>
 <p><excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
@@ -253,7 +253,7 @@
     
     <entry>
       <title><![CDATA[女王蜂王房玛瑙篇，辉夜篇食完感想（超级剧透，多图预警）]]></title>
-      <url>xjinjin.net/2017/03/27/game-queen-of-bee/</url>
+      <url>xjinjin.top/2017/03/27/game-queen-of-bee/</url>
       <content type="html"><![CDATA[<p>在玩鸟笼婚姻（要不要给它也写篇感想呢）的时候，被安利了这个游戏，于是就来玩了。BGM真的是很赞啊，画风个人觉得还是比较喜欢鸟笼婚姻那种，但是声优们真的是很给力啊，剧情也很不错（很肉？）。<br><strong>警告哟： 基本快全剧透了，除了BE有些记不得了！适合已经玩完的朋友一起来回味一下。</strong></p>
 <h2 id="出场阵营"><a href="#出场阵营" class="headerlink" title="出场阵营"></a>出场阵营</h2><p>两篇都是围绕着两位蜂之王女，也是是女王候补人，和拥护他们的三位臣子一起争夺王位的故事。两边阵营分别是<br>王女：玛瑙<br>臣子：贵蜂丸(教官🌹)，白鸥（温柔的哥哥?🌹）,红玉(女王的狗？🐶)<br>王女：辉夜<br>臣子：皇树(身分不明的调教者🌹)，燐（小可爱奴隶🌼）, 虚(结巴的疯狂追随者＋虫师？🐛)</p>
 <p><excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
@@ -360,7 +360,7 @@
     
     <entry>
       <title><![CDATA[css伪元素before,after实现的一些效果]]></title>
-      <url>xjinjin.net/2017/01/25/css-before-after/</url>
+      <url>xjinjin.top/2017/01/25/css-before-after/</url>
       <content type="html"><![CDATA[<p>总觉得css的伪元素是很有用的东西，平常用的最多的就是last-child, first-child(设置表格边框样式)，before, after…<br>能通过css直接实现的东西，效果还ok的话，当然最好还是用css啦，而且伪元素兼容性也很好。<br>下面列举了一些使用伪元素before, after实现的例子</p>
 <p><excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
 <ul>
@@ -386,7 +386,7 @@
     
     <entry>
       <title><![CDATA[angular 自定义form表单验证控件]]></title>
-      <url>xjinjin.net/2016/12/10/angular-input-validate/</url>
+      <url>xjinjin.top/2016/12/10/angular-input-validate/</url>
       <content type="html"><![CDATA[<p>angular的form体系，为我们做表单验证提供了很大的便利.</p>
 <ul>
 <li>它会为我们的表单元素添加标识不同状态的class，我们可以set对应样式控制元素表现</li>
@@ -420,7 +420,7 @@
     
     <entry>
       <title><![CDATA[BL游戏盘点感动瞬间（三）—— 咎狗之血，sweet pool]]></title>
-      <url>xjinjin.net/2016/10/25/bl-game-moved-3/</url>
+      <url>xjinjin.top/2016/10/25/bl-game-moved-3/</url>
       <content type="html"><![CDATA[<p>啊，美好的周末就结束啦，又到了怀念过去的时候。不久前刚刚通关了神学校，之前一直因为各种说剧情太长，被唬住了，没敢玩，真玩完感觉还好，可惜其中的两个角色，神父和加比的结局似乎都不是那么完美。</p>
 <p>不过，本期我们要盘点的是咎狗之血和sweet pool （和Dmmd，lamento并称为Nitro+ChiRAL四部曲）</p>
 <p><img src="http://ww3.sinaimg.cn/large/904e587bjw1f92md6wykuj20kx0g7wi1.jpg" alt="Sweet Pool"></p>
@@ -500,7 +500,7 @@
     
     <entry>
       <title><![CDATA[BL游戏盘点感动瞬间（二）—— steal，lucky dog]]></title>
-      <url>xjinjin.net/2016/09/25/bl-game-moved-2/</url>
+      <url>xjinjin.top/2016/09/25/bl-game-moved-2/</url>
       <content type="html"><![CDATA[<p>啊，因为种种原因，真的好久没有碰游戏了呢。之前一直卡在神无之鸟那儿， 果然这种偏日常系列的我还是不太感冒的。</p>
 <p>好的，废话少说，今天来盘点一下steal和lucky dog里的一些情节。这两个游戏我还是比较心水的，尤其是后者，简直大爱，每个角色的个人线部分编剧都非常走心。</p>
 <p>因为，玩的时间很久了，所以剧情描述可能有出入，欢迎补充和指正哟。</p>
@@ -572,7 +572,7 @@
     
     <entry>
       <title><![CDATA[webpack构建静态多页应用项目框架]]></title>
-      <url>xjinjin.net/2016/08/20/webpack-multiple-page-static/</url>
+      <url>xjinjin.top/2016/08/20/webpack-multiple-page-static/</url>
       <content type="html"><![CDATA[<p>最近因为项目需求，需要使用webpack构建一个静态的多页应用，譬如主页网站之类。本文主要来解析一下按功能模块划分的项目结构，再重点分析webpack的配置文件。<a href="https://github.com/jincui/webpack-multiplepage" target="_blank" rel="external">项目源码github地址</a></p>
 <p>view engine使用jade, css 预编译使用stylus，这个影响不大。<br>首先，我们来看一下项目的基本结构</p>
 <p><excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
@@ -600,7 +600,7 @@
     
     <entry>
       <title><![CDATA[BL游戏盘点感动瞬间（一）——鬼畜眼镜，lamento]]></title>
-      <url>xjinjin.net/2016/08/14/bl-game-moved/</url>
+      <url>xjinjin.top/2016/08/14/bl-game-moved/</url>
       <content type="html"><![CDATA[<p>作为一个腐女，玩了很久的BL文字冒险游戏，有画风赞的，有剧情赞的，有BGM赞的。每每那些精彩直戳泪点的瞬间，让人爱到心碎。</p>
 <p>所以特地开个系列来诉说那一段段感人肺腑的故事，欢迎同感者来交流。</p>
 <h2 id="鬼畜眼镜"><a href="#鬼畜眼镜" class="headerlink" title="鬼畜眼镜"></a>鬼畜眼镜</h2><p><img src="http://ww2.sinaimg.cn/large/904e587bjw1f5mg3sa7nhj20ma0gm43x.jpg" alt="鬼畜眼镜图"></p>
@@ -654,7 +654,7 @@
     
     <entry>
       <title><![CDATA[js数字format转换代码，带千，万，百万单位]]></title>
-      <url>xjinjin.net/2016/08/12/unit-conversion/</url>
+      <url>xjinjin.top/2016/08/12/unit-conversion/</url>
       <content type="html"><![CDATA[<p>所谓带单位，就是实现1000-&gt;1千，259999-&gt;25万，10020002-&gt;1千万类似这样的处理</p>
 <p>在介绍format的snippet之前，先来介绍一个很好用的库（虽然并没有什么关系）, <a href="http://numeraljs.com/" target="_blank" rel="external">numeral.js</a>, 有很多format的功能，譬如百分比转换，货币转换，单位换算，还能unformat, 配置不同的语言转换标准，真的十分强大。</p>
 <p><excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
@@ -672,7 +672,7 @@
     
     <entry>
       <title><![CDATA[透明背景,可编辑下拉框]]></title>
-      <url>xjinjin.net/2016/07/15/transparent-editable-select/</url>
+      <url>xjinjin.top/2016/07/15/transparent-editable-select/</url>
       <content type="html"><![CDATA[<p>可编辑的下拉框似乎已经有很多实现了，无非是加上一个input，配合监听事件，不过小金金偏爱透明的控件，所有实现有点变化。<br>依旧是非图片实现（没准，有图片会更方便）</p>
 <p>实现效果<br><img src="http://ww4.sinaimg.cn/large/904e587bgw1f5vjav1q5ig204102ndgw.gif" alt="透明可编辑下拉框"></p>
 <p><excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
@@ -696,7 +696,7 @@
     
     <entry>
       <title><![CDATA[web app透明渐变的导航栏]]></title>
-      <url>xjinjin.net/2016/07/06/transparent-nav/</url>
+      <url>xjinjin.top/2016/07/06/transparent-nav/</url>
       <content type="html"><![CDATA[<p>这种透明渐变的导航栏就是我们经常看到的随用户滚动改变透明度的导航栏，本次主要通过background-color的rgba值来实现</p>
 <p>原理：监听window的scroll事件，根据滚动值动态设置rgba值</p>
 <p><excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
@@ -718,7 +718,7 @@
     
     <entry>
       <title><![CDATA[自定义android时间轴控件]]></title>
-      <url>xjinjin.net/2016/06/03/timeline-of-android/</url>
+      <url>xjinjin.top/2016/06/03/timeline-of-android/</url>
       <content type="html"><![CDATA[<p>其实没什么技术难点，采用原生的ListView实现，重点反而在layout布局上(RelativeLayout真是强大)。</p>
 <p>先来展示一下最终效果</p>
 <p><excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
