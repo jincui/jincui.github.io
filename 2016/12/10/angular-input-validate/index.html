@@ -29,8 +29,8 @@
 它会为我们的表单元素添加标识不同状态的class，我们可以set对应样式控制元素表现
 根据form的$valid, $toched等状态属性控制元素行为，譬如对submit button添加上(ng-disabled=”form.$invalid”)属性，输入不合法时禁止提交
 在controller里，通过form的$setVal">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/904e587bgw1faluhv34bmg20gb08cjwj.gif">
-<meta property="og:updated_time" content="2016-12-10T16:04:16.000Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/08/nGmlb6.gif">
+<meta property="og:updated_time" content="2019-09-08T11:42:35.192Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="angular 自定义form表单验证控件">
 <meta name="twitter:description" content="angular的form体系，为我们做表单验证提供了很大的便利.
@@ -38,7 +38,7 @@
 它会为我们的表单元素添加标识不同状态的class，我们可以set对应样式控制元素表现
 根据form的$valid, $toched等状态属性控制元素行为，譬如对submit button添加上(ng-disabled=”form.$invalid”)属性，输入不合法时禁止提交
 在controller里，通过form的$setVal">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/904e587bgw1faluhv34bmg20gb08cjwj.gif">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/09/08/nGmlb6.gif">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -338,7 +338,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">NumRangeValidateDirective</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="built_in">require</span>: <span class="string">'ngModel'</span>,</span><br><span class="line">        scope: &#123;</span><br><span class="line">            min: <span class="string">'='</span>,</span><br><span class="line">            max: <span class="string">'='</span></span><br><span class="line">        &#125;,</span><br><span class="line">        link: (scope, elem, attr, ngModel) =&gt; &#123;</span><br><span class="line">            <span class="comment">//For DOM -&gt; model validation</span></span><br><span class="line">            ngModel.$parsers.push((value) =&gt; &#123;</span><br><span class="line">                <span class="keyword">let</span> valid = ((<span class="regexp">/^-?(0|([1-9]\d*))$/</span>).test(<span class="string">`<span class="subst">$&#123;value&#125;</span>`</span>));</span><br><span class="line">                <span class="keyword">const</span> res = _.toNumber(value);</span><br><span class="line">                valid = _.isUndefined(scope.min) ? valid : (valid &amp;&amp; (res &gt;= scope.min));</span><br><span class="line">                valid = _.isUndefined(scope.max) ? valid : (valid &amp;&amp; (res &lt;= scope.max));</span><br><span class="line">                ngModel.$setValidity(<span class="string">'numRange'</span>, valid);</span><br><span class="line">                <span class="keyword">return</span> valid ? res : <span class="literal">undefined</span>; <span class="comment">// eslint-disable-line no-undefined</span></span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//For model -&gt; DOM validation</span></span><br><span class="line">            <span class="comment">// ngModel.$formatters.unshift((value) =&gt; &#123;</span></span><br><span class="line">            <span class="comment">//     // ngModel.$setValidity('budget', blacklist.indexOf(value) === -1);</span></span><br><span class="line">            <span class="comment">//     return value;</span></span><br><span class="line">            <span class="comment">// &#125;);</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> NumRangeValidateDirective;</span><br></pre></td></tr></table></figure>
 <p>往input上加上num-range-validate控件（angular自带一些验证，如ng-required,可以去<a href="https://docs.angularjs.org/api/ng/directive/form" target="_blank" rel="external">官网</a>查看）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">form(name=&quot;ctrl.form&quot;)</span><br><span class="line">   .input-wrapper</span><br><span class="line">     input(name=&quot;budget&quot;, ng-model=&quot;ctrl.totalBudget&quot;, num-range-validate,  min=&quot;ctrl.sum&quot;)</span><br><span class="line">     i.fa.fa-exclamation.error(ng-show=&quot;ctrl.form.budget.$invalid&quot;, title=&quot;您的预算不得低于已选物品总金额&#123;&#123;ctrl.sum&#125;&#125;&quot;)</span><br></pre></td></tr></table></figure></p>
 <p>可以通过<code>ctrl.form.budget.$error</code>拿到具体的错误信息。</p>
-<p><img src="http://ww1.sinaimg.cn/large/904e587bgw1faluhv34bmg20gb08cjwj.gif" alt="示意图"><br>附上<a href="https://codepen.io/xjinjin/pen/LbWzxO" target="_blank" rel="external">codepen Example 地址</a></p>
+<p><img src="https://s2.ax1x.com/2019/09/08/nGmlb6.gif" alt="示意图"><br>附上<a href="https://codepen.io/xjinjin/pen/LbWzxO" target="_blank" rel="external">codepen Example 地址</a></p>
 <p>参考</p>
 <ul>
 <li><a href="http://www.ngnice.com/posts/81c1eb92bfbde0" target="_blank" rel="external">angular Formvalidate 运作原理</a></li>
@@ -356,7 +356,7 @@
         <p><span>本文标题:</span><a href="/2016/12/10/angular-input-validate/">angular 自定义form表单验证控件</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">xjinjin</a></p>
         <p><span>发布时间:</span>2016-12-10, 18:55:02</p>
-        <p><span>最后更新:</span>2016-12-11, 00:04:16</p>
+        <p><span>最后更新:</span>2019-09-08, 19:42:35</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/12/10/angular-input-validate/" title="angular 自定义form表单验证控件">xjinjin.top/2016/12/10/angular-input-validate/</a>
             <span class="copy-path" data-clipboard-text="原文: xjinjin.top/2016/12/10/angular-input-validate/　　作者: xjinjin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
